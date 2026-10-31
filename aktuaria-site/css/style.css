@@ -1,0 +1,63 @@
+/* Tampilan halaman. Warna ada di :root (mode terang dan gelap). */
+:root{--bg:#f4f6f8;--ink:#1b2433;--muted:#5d6878;--accent:#0f5c63;--card:#fff;--line:#d5dbe3;--chip:#e3f0f1;--shadow:0 8px 28px rgba(20,30,50,.18);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12171f;--ink:#e6eaf0;--muted:#98a3b3;--accent:#6cc4cc;--card:#1b222d;--line:#323c4b;--chip:#1d3a3e;--shadow:0 8px 28px rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#12171f;--ink:#e6eaf0;--muted:#98a3b3;--accent:#6cc4cc;--card:#1b222d;--line:#323c4b;--chip:#1d3a3e;--shadow:0 8px 28px rgba(0,0,0,.5)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.75 "Source Serif 4",Georgia,serif}
+main{max-width:680px;margin:0 auto;padding:56px 24px 96px}
+h1{font-size:34px;line-height:1.2;margin:0 0 8px;font-weight:600}
+h2{font-size:22px;margin:44px 0 6px;font-weight:600}
+.hint{font:15px/1.5 Inter,system-ui,sans-serif;color:var(--muted);background:var(--chip);padding:10px 14px;border-radius:6px;margin:16px 0 8px}
+.term{color:var(--accent);border-bottom:2px dotted var(--accent);cursor:help}
+.term:hover{background:var(--chip)}
+.card{position:fixed;z-index:50;width:360px;max-width:92vw;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:6px;box-shadow:var(--shadow);padding:14px 16px;font:15px/1.6 Inter,system-ui,sans-serif;color:var(--ink)}
+.card h3{margin:0 0 4px;font-size:16px;font-weight:600;color:var(--accent)}
+.card p{margin:0 0 8px}
+.card .lbl{font-size:13px;color:var(--muted);margin:8px 0 0}
+.card .f{overflow-x:auto;background:var(--bg);border-radius:4px;padding:2px 8px;margin:4px 0}
+.card .ex{border-left:3px solid var(--line);padding-left:10px;color:var(--muted);margin-top:4px}
+mjx-container{color:inherit}
+.pick{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:16px;z-index:60;font:600 14px Inter,system-ui,sans-serif;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 10px;box-shadow:var(--shadow);cursor:pointer}
+.picks{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:16px;z-index:60;display:flex;gap:8px}
+.pick{position:static!important;max-width:260px}
+.crs{font:600 15px Inter,system-ui,sans-serif;color:var(--accent);margin:0}
+main ul{font-size:17px;line-height:1.7;padding-left:22px}
+.pick:focus-visible{outline:2px solid var(--accent)}
+main table{display:block;overflow-x:auto;border-collapse:collapse;font:15px Inter,system-ui,sans-serif;margin:14px 0}main th,main td{border-bottom:1px solid var(--line);padding:6px 12px;text-align:right}main th{color:var(--accent)}
+.soal{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:2px 18px;margin:12px 0;background:var(--card);font:16px/1.65 Inter,system-ui,sans-serif}.soal p{margin:10px 0}
+.by{font:12px/1 Inter,system-ui,sans-serif;letter-spacing:.08em;color:var(--muted);margin:0 0 14px}
+
+/* Latihan soal (kotak buka-tutup) */
+.lat{font:600 15px Inter,system-ui,sans-serif;color:#fff;background:var(--accent);border:0;border-radius:6px;padding:10px 16px;margin:36px 0 8px;cursor:pointer}
+:root[data-theme="dark"] .lat{color:#12171f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lat{color:#12171f}}
+.lsoal{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:2px 18px 12px;margin:12px 0;background:var(--card);font:16px/1.65 Inter,system-ui,sans-serif}
+.lsoal details{margin-top:8px;border:1px solid var(--line);border-radius:6px;background:var(--chip)}
+.lsoal summary{cursor:pointer;font-weight:600;padding:8px 12px;color:var(--accent)}
+.lsoal details>div{padding:0 14px 10px;overflow-x:auto}
+
+/* ===== Lobby, halaman matkul, tombol Beranda ===== */
+.home{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:16px;z-index:60;font:600 14px Inter,system-ui,sans-serif;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 10px;box-shadow:var(--shadow);text-decoration:none}
+.home:hover{border-color:var(--accent);color:var(--accent)}
+body.lobby .home,body.lobby .picks,body.course .picks{display:none}
+a.crs{display:block;text-decoration:none}
+a.crs:hover{text-decoration:underline}
+.sub{font:16px/1.6 Inter,system-ui,sans-serif;color:var(--muted);margin:6px 0 0}
+.hero{padding:48px 0 4px}
+.hero h1{font-size:46px;margin:0 0 6px}
+.resume{display:inline-block;margin-top:22px;padding:12px 18px;border-radius:8px;background:var(--accent);color:var(--bg);text-decoration:none;font:600 15px/1.4 Inter,system-ui,sans-serif}
+.resume span{display:block;font-weight:400;font-size:13px;opacity:.85}
+.grid{display:grid;gap:14px;margin:34px 0 18px}
+.ccard{display:block;padding:18px 20px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;text-decoration:none;color:var(--ink);transition:transform .12s,box-shadow .12s}
+.ccard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.ccard h2{margin:0 0 6px;font-size:21px}
+.ccard p{margin:0 0 10px;font:15px/1.55 Inter,system-ui,sans-serif;color:var(--muted)}
+.ccard .meta{font:600 13px Inter,system-ui,sans-serif;color:var(--accent)}
+.foot{font:13px Inter,system-ui,sans-serif;color:var(--muted)}
+.chlist{list-style:none;padding:0;margin:26px 0}
+.chlist li{margin:8px 0}
+.chlist a{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:8px;text-decoration:none;color:var(--ink);font:16px/1.4 Inter,system-ui,sans-serif}
+.chlist a:hover{border-color:var(--accent);background:var(--chip)}
+.chlist .no{flex:none;width:30px;height:30px;border-radius:50%;background:var(--chip);color:var(--accent);display:grid;place-items:center;font-weight:600;font-size:14px}
+.chlist .tt{flex:1}
+.chlist .bd{font-size:12px;color:var(--accent);border:1px solid var(--accent);border-radius:99px;padding:2px 8px}
