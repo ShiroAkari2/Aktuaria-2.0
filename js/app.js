@@ -43,14 +43,39 @@ const flat = {}; Object.entries(C).forEach(([k,c])=>c.ch.forEach(x=>flat[x.id]={
 const pick=document.getElementById('pick'), chap=document.getElementById('chap');
 pick.innerHTML=Object.entries(C).map(([k,c])=>'<option value="'+k+'">'+c.t+'</option>').join('');
 
-function show(id){
- const ch=flat[id]||flat['matkeu-1'], k=ch.k; closeFrom(0);
- pick.value=k; chap.innerHTML=C[k].ch.map((x,i)=>'<option value="'+x.id+'">Bab '+(i+1)+': '+x.t+'</option>').join(''); chap.value=ch.id;
- const el=document.getElementById('content');
- el.innerHTML='<p class="by">By ShiroAkari</p><p class="crs">'+C[k].t+'</p><h1>'+ch.t+'</h1><div class="hint">Arahkan kursor ke kata bertitik-titik untuk melihat definisi dan rumusnya.</div>'+link(ch.h);
- document.title=ch.t+' · Catatan Aktuaria'; try{ if(location.hash!=='#'+ch.id) history.replaceState(null,'','#'+ch.id); }catch(e){} scrollTo(0,0);
- if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([el]);
+function setMode(m){ document.body.className=m; }
+function remember(id){ try{ localStorage.setItem('lastChapter',id); }catch(e){} }
+function recall(){ try{ return localStorage.getItem('lastChapter'); }catch(e){ return null; } }
+function setHash(h){ try{ if(location.hash!=='#'+h) history.replaceState(null,'','#'+h); }catch(e){} }
 
+/* Lobby: halaman awal */
+function showLobby(){
+ setMode('lobby'); const el=document.getElementById('content');
+ const last=recall(), lc=last&&flat[last];
+ el.innerHTML='<div class="hero"><p class="by">By ShiroAkari</p><h1>Catatan Aktuaria</h1><p class="sub">Catatan belajar dengan definisi, rumus, dan contoh yang muncul saat kursor diarahkan ke istilah.</p>'
+  +(lc?'<a class="resume" href="#'+lc.id+'">Lanjutkan belajar<span>'+lc.t+' · '+C[lc.k].t+'</span></a>':'')+'</div>'
+  +'<div class="grid">'+Object.entries(C).map(([k,c])=>'<a class="ccard" href="#'+k+'"><h2>'+c.t+'</h2><p>'+(c.desc||'')+'</p><span class="meta">'+c.ch.length+' bab</span></a>').join('')+'</div>'
+  +'<p class="foot">'+Object.keys(C).length+' mata kuliah · '+Object.keys(T).length+' istilah di glosarium</p>';
+ document.title='Catatan Aktuaria'; setHash('home'); scrollTo(0,0);
+}
+
+/* Halaman satu mata kuliah: daftar bab */
+function showCourse(k){
+ setMode('course'); const c=C[k], el=document.getElementById('content');
+ el.innerHTML='<p class="crs">Mata kuliah</p><h1>'+c.t+'</h1>'+(c.desc?'<p class="sub">'+c.desc+'</p>':'')
+  +'<ol class="chlist">'+c.ch.map((x,i)=>'<li><a href="#'+x.id+'"><span class="no">'+(x.t.startsWith('Lampiran')?'•':i+1)+'</span><span class="tt">'+x.t+'</span>'+((typeof P!=='undefined'&&P[x.id])?'<span class="bd">Latihan</span>':'')+'</a></li>').join('')+'</ol>';
+ document.title=c.t+' · Catatan Aktuaria'; setHash(k); scrollTo(0,0);
+}
+
+/* Halaman satu bab */
+function showChapter(id){
+ setMode('chapter');
+ const ch=flat[id], k=ch.k;
+ pick.value=k; chap.innerHTML=C[k].ch.map((x,i)=>'<option value="'+x.id+'">'+(x.t.startsWith('Lampiran')?'':'Bab '+(i+1)+': ')+x.t+'</option>').join(''); chap.value=ch.id;
+ const el=document.getElementById('content');
+ el.innerHTML='<p class="by">By ShiroAkari</p><a class="crs" href="#'+k+'">'+C[k].t+'</a><h1>'+ch.t+'</h1><div class="hint">Arahkan kursor ke kata bertitik-titik untuk melihat definisi dan rumusnya.</div>'+link(ch.h);
+ document.title=ch.t+' · Catatan Aktuaria'; setHash(ch.id); remember(ch.id); scrollTo(0,0);
+ if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([el]);
  /* Latihan soal (jika bab ini punya di data/latihan.js) */
  const L=(typeof P!=='undefined')&&P[ch.id]; if(!L) return;
  el.insertAdjacentHTML('beforeend',
@@ -59,6 +84,13 @@ function show(id){
  const bt=document.getElementById('latBtn'), bx=document.getElementById('latBox');
  bt.onclick=()=>{ bx.hidden=!bx.hidden; bt.setAttribute('aria-expanded',String(!bx.hidden)); bt.textContent='Latihan soal ('+L.length+') '+(bx.hidden?'▾':'▴'); };
  if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([bx]);
+}
+
+function show(id){
+ closeFrom(0);
+ if(!id||id==='home'||(!C[id]&&!flat[id])) return showLobby();
+ if(C[id]) return showCourse(id);
+ return showChapter(id);
 }
 
 pick.addEventListener('change',()=>show(C[pick.value].ch[0].id));

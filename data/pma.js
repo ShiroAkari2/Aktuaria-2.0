@@ -1,6 +1,6 @@
 /* Pengantar Matematika Aktuaria: satu objek per bab. Tambah bab baru = tambah satu blok {id, t, h} di daftar ch. */
 window.COURSES = window.COURSES || {};
-COURSES.pma = {t:"Pengantar Matematika Aktuaria", ch:[
+COURSES.pma = {t:"Pengantar Matematika Aktuaria", desc:"Suku bunga, tabel mortalitas, asuransi jiwa, anuitas hidup, dan premi manfaat.", ch:[
  {id:"pma-n1", t:"Suku bunga (Pekan 1)", h:String.raw`<h2>Ukuran suku bunga</h2>
 <p>Suku bunga efektif \(i\), faktor diskonto \(v=\frac1{1+i}\), diskonto \(d=iv\), serta [[nominal|bunga nominal dan force of interest]]:</p>
 \[1+i=\Big(1+\frac{i^{(m)}}{m}\Big)^m=\Big(1-\frac{d^{(m)}}{m}\Big)^{-m}=e^{\delta}=v^{-1}=(1-d)^{-1}\]

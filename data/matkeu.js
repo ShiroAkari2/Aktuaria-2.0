@@ -1,6 +1,6 @@
 /* Matematika Keuangan: satu objek per bab. Tambah bab baru = tambah satu blok {id, t, h} di daftar ch. */
 window.COURSES = window.COURSES || {};
-COURSES.matkeu = {t:"Matematika Keuangan", ch:[
+COURSES.matkeu = {t:"Matematika Keuangan", desc:"Bunga dan anuitas, amortisasi pinjaman, sinking fund, obligasi, dan asset-liability matching.", ch:[
  {id:"matkeu-1", t:"Bunga dan anuitas", h:String.raw`<h2>Nilai uang terhadap waktu</h2>
 <p>Satu rupiah hari ini lebih berharga daripada satu rupiah tahun depan karena uang bisa berbunga. Ada [[sederhana|bunga sederhana]] dan [[majemuk|bunga majemuk]]; ukuran per periodenya adalah [[bunga|suku bunga efektif]]. Pembayaran masa depan diubah menjadi [[pv|nilai sekarang]] memakai [[v|faktor diskonto]].</p>
 <h2>Anuitas</h2>

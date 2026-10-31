@@ -1,6 +1,6 @@
 /* Statistika Matematika: satu objek per bab. Tambah bab baru = tambah satu blok {id, t, h} di daftar ch. */
 window.COURSES = window.COURSES || {};
-COURSES.statmat = {t:"Statistika Matematika", ch:[
+COURSES.statmat = {t:"Statistika Matematika", desc:"Distribusi sampel dan CLT, penaksiran (momen, MLE, Bayesian), statistik cukup, selang kepercayaan, dan uji hipotesis.", ch:[
  {id:"statmat-c1", t:"Teorema limit pusat dan hampiran normal (Pekan 3–4)", h:String.raw`<h2>Teorema limit pusat</h2>
 <p>Misalkan \(X_1,\dots,X_n\) iid dengan mean \(\mu\) dan varians \(\sigma^2\). Menurut [[clt|CLT]], untuk \(n\) besar:</p>
 \[Z_n=\frac{\bar X_n-\mu}{\sigma/\sqrt n}=\frac1{\sqrt n}\sum_{i=1}^n Y_i\ \xrightarrow{D}\ N(0,1),\qquad Y_i=\frac{X_i-\mu}{\sigma}\]
