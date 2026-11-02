@@ -2,7 +2,36 @@
 /* Data dibaca dari: data/glosarium.js (T), data/<matkul>.js (COURSES), data/latihan.js (P) */
 
 const esc = s => s.replace(/\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)/g, m => m.replace(/</g,'&lt;').replace(/>/g,'&gt;'));
-const link = s => esc(s).replace(/\[\[(\w+)\|([^\]]+)\]\]/g,'<span class="term" data-t="$1">$2</span>');
+/* Komponen tampilan di dalam teks bab (tulis di data/*.js):
+   ⟦soal|teks⟧  ⟦dik|teks⟧  ⟦tanya|teks⟧  ⟦kes|teks⟧  ⟦catatan|teks⟧
+   ⟦langkah|nomor|judul|isi⟧   ⟦garis|batas bawah|batas atas|simbol, mis. μ₁−μ₂⟧ */
+function garis(lo,hi,sim){
+ lo=+lo; hi=+hi; sim=sim||'μ';
+ const W=640,H=122,P=46,y=56,mn=Math.min(lo,0),mx=Math.max(hi,0),sp=(mx-mn)||1,a=mn-sp*.2,b=mx+sp*.2;
+ const X=v=>(P+(v-a)/(b-a)*(W-2*P)).toFixed(1), f=v=>String(+(+v).toFixed(4)).replace('-','−').replace('.',',');
+ const ps=sim.split('−'), A=ps[0], B=ps[1];
+ const msg = hi<0 ? 'Selang seluruhnya negatif, jadi '+(B?A+' < '+B:sim+' < 0')
+           : lo>0 ? 'Selang seluruhnya positif, jadi '+(B?A+' > '+B:sim+' > 0')
+           : 'Selang memuat 0, jadi tidak dapat disimpulkan ada perbedaan';
+ let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Garis bilangan selang kepercayaan">'
+  +'<line class="nl-ax" x1="'+(P-26)+'" y1="'+y+'" x2="'+(W-P+26)+'" y2="'+y+'"/>'
+  +'<polygon points="'+(W-P+30)+','+y+' '+(W-P+18)+','+(y-6)+' '+(W-P+18)+','+(y+6)+'" fill="currentColor" style="color:var(--ink)"/>';
+ if(lo<0) s+='<line class="nl-neg" x1="'+X(lo)+'" y1="'+y+'" x2="'+X(Math.min(hi,0))+'" y2="'+y+'"/><text class="nl-s" x="'+((+X(lo)+ +X(Math.min(hi,0)))/2).toFixed(1)+'" y="'+(y-18)+'">− − − −</text>';
+ if(hi>0) s+='<line class="nl-pos" x1="'+X(Math.max(lo,0))+'" y1="'+y+'" x2="'+X(hi)+'" y2="'+y+'"/><text class="nl-s" x="'+((+X(Math.max(lo,0))+ +X(hi))/2).toFixed(1)+'" y="'+(y-18)+'">+ + + +</text>';
+ s+='<line class="nl-tk" x1="'+X(0)+'" y1="'+(y-11)+'" x2="'+X(0)+'" y2="'+(y+11)+'"/><text class="nl-z" x="'+X(0)+'" y="'+(y+30)+'">0</text>'
+  +'<line class="nl-tk" x1="'+X(lo)+'" y1="'+(y-8)+'" x2="'+X(lo)+'" y2="'+(y+8)+'"/><text class="nl-t" x="'+X(lo)+'" y="'+(y+50)+'">'+f(lo)+'</text>'
+  +'<line class="nl-tk" x1="'+X(hi)+'" y1="'+(y-8)+'" x2="'+X(hi)+'" y2="'+(y+8)+'"/><text class="nl-t" x="'+X(hi)+'" y="'+(y+50)+'">'+f(hi)+'</text>'
+  +'<text class="nl-v" x="'+(W-8)+'" y="'+(y-14)+'">'+sim+'</text></svg><div class="nl-msg">'+msg+'</div>';
+ return s;
+}
+const komp = s => s.replace(/⟦([\s\S]*?)⟧/g,(m,b)=>{
+ const p=b.split('|'), t=p[0].trim();
+ if(t==='garis') return '<div class="nl">'+garis(p[1],p[2],p[3])+'</div>';
+ if(t==='langkah') return '<div class="stp"><span class="no">'+p[1]+'</span><div class="stp-b"><div class="stp-t">'+p[2]+'</div><div class="stp-c">'+p.slice(3).join('|')+'</div></div></div>';
+ const lab={soal:'Soal',dik:'Diketahui',tanya:'Ditanyakan',kes:'Kesimpulan',catatan:'Catatan'}[t];
+ return lab?'<div class="pbox '+t+'"><span class="tag">'+lab+'</span> '+p.slice(1).join('|')+'</div>':m;
+});
+const link = s => komp(esc(s)).replace(/\[\[(\w+)\|([^\]]+)\]\]/g,'<span class="term" data-t="$1">$2</span>');
 
 const cards = []; let timer = null, openT = null;
 function closeFrom(l){ while(cards.length>l){ cards.pop().el.remove(); } }
