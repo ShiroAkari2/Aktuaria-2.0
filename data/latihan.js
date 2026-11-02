@@ -22,4 +22,12 @@ const P = {
   {q:String.raw`Sampel \(n=25\) dari \(N(\theta,1)\) memberi \(\bar x=0{,}5\). Uji \(H_0:\theta=0\) dengan LRT pada \(\alpha=0{,}05\) (\(\chi^2_{0{,}05;1}=3{,}84\)).`,
    a:String.raw`<p>\(-2\ln\Lambda=n(\bar x-\theta_0)^2=25(0{,}5)^2=6{,}25\). Karena \(6{,}25>3{,}84\), tolak \(H_0\). Setara dengan uji \(z\): \(z=0{,}5\times5=2{,}5\), \(z^2=6{,}25\).</p>`},
  ],
+ "metstat-6":[
+  {q:String.raw`Sebuah sekolah mengambil sampel 64 siswa dan memperoleh rata-rata nilai matematika 75. Simpangan baku populasi 8. Tentukan selang kepercayaan 95% bagi rata-rata nilai seluruh siswa.`,
+   a:String.raw`\(\sigma\) diketahui, pakai \(z\). \(SE=8/\sqrt{64}=1\), \(MoE=1{,}96\times1=1{,}96\). Selang: \(73{,}04<\mu<76{,}96\).`},
+  {q:String.raw`Dari 16 mahasiswa, rata-rata waktu belajar 5 jam per hari dengan simpangan baku sampel 2 jam. Populasi normal. Tentukan selang kepercayaan 95% bagi rata-rata waktu belajar.`,
+   a:String.raw`\(\sigma\) tidak diketahui dan \(n=16<30\), pakai \(t\) dengan \(db=15\), \(t_{0{,}025;15}=2{,}131\). \(SE=2/4=0{,}5\), \(MoE=2{,}131\times0{,}5=1{,}0655\). Selang: \(3{,}934<\mu<6{,}066\).`},
+  {q:String.raw`Dari 400 orang yang diwawancarai, 240 menggunakan sabun merek tertentu. Tentukan selang kepercayaan 90% bagi proporsi populasi pengguna.`,
+   a:String.raw`\(\hat p=240/400=0{,}6\), \(SE=\sqrt{0{,}6\times0{,}4/400}\approx0{,}0245\), \(z_{0{,}05}=1{,}645\), \(MoE\approx0{,}0403\). Selang: \(0{,}5597<p<0{,}6403\).`},
+ ],
 };
