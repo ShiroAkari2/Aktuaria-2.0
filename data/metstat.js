@@ -42,23 +42,103 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 <h2>Penduga titik dan penduga selang</h2>
 <p>Penduga titik memberi satu nilai, tetapi tidak menunjukkan seberapa dekat nilai itu dengan parameter sebenarnya. Karena itu dipakai penduga selang ([[sel|selang kepercayaan]]).</p>
 <p>Contoh titik: tinggi 10 mahasiswa berjumlah 1.566 cm, jadi dugaan rata-rata \(\bar x=156{,}6\) cm. Nilai 70, 80, 75, 85, 90 memberi \(\bar x=80\). Dari 200 mahasiswa, 80 memakai paket internet lebih dari 20 GB: \(\hat p=80/200=0{,}4\).</p>`},
- {id:"metstat-6", t:"Selang kepercayaan: rata-rata dan proporsi (Pekan 6–7)", h:String.raw`<h2>Bentuk umum</h2>
-<p>Selang kepercayaan \(100(1-\alpha)\%\) adalah penduga titik \(\pm\) [[ms_se|margin of error]], dan margin of error \(=\) nilai kritis \(\times\) galat baku penduga. Nilai kritis \(z\) yang sering dipakai: 90% \(\to1{,}645\), 95% \(\to1{,}96\), 99% \(\to2{,}576\).</p>
-<h2>Rata-rata populasi</h2>
-<p>[[ms_skmean|Selang kepercayaan bagi μ]]: pakai \(z\) bila \(\sigma\) diketahui; bila \(\sigma\) tidak diketahui pakai \(t\) dengan \(db=n-1\) untuk \(n<30\), dan \(z\) untuk \(n\ge30\).</p>
-<p>Contoh: \(\sigma=2{,}5\), \(n=36\), \(\bar x=10\): \(SE=2{,}5/6\approx0{,}4167\), margin of error \(=1{,}96\times0{,}4167\approx0{,}817\), jadi \(9{,}183<\mu<10{,}817\) (slide: 9,184 sampai 10,815 karena SE dibulatkan menjadi 0,416).</p>
-<h2>Proporsi populasi</h2>
-<p>[[ms_skprop|Selang kepercayaan bagi proporsi p]]: \(\hat p\pm z_{\alpha/2}\sqrt{\hat p(1-\hat p)/n}\). Contoh survei pilkada: \(\hat p=0{,}72\), \(n=2000\), 90%: \(SE=0{,}01004\), margin of error \(=1{,}645\times0{,}01004=0{,}0165\), jadi \(0{,}7035<p<0{,}7365\).</p>`},
- {id:"metstat-7", t:"Selang kepercayaan: beda dua rata-rata, berpasangan, beda proporsi (Pekan 6–7)", h:String.raw`<h2>Beda dua rata-rata (sampel bebas)</h2>
-<p>Penduga titik \(\bar x_1-\bar x_2\). Bila ragam diketahui pakai \(z\) dengan \(SE=\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}\). Bila tidak diketahui dan dianggap sama, pakai [[ms_gabung|ragam gabungan]] dengan \(db=n_1+n_2-2\). Bila dianggap tidak sama, pakai \(SE=\sqrt{s_1^2/n_1+s_2^2/n_2}\) dengan db dari rumus Welch (atau pendekatan konservatif \(\min(n_1,n_2)-1\)). Untuk sampel besar (\(n_1,n_2\ge30\)), \(t\) boleh didekati \(z\).</p>
+ {id:"metstat-6", t:"Selang kepercayaan: rata-rata populasi (Pekan 6–7)", h:String.raw`<h2>Bentuk umum</h2>
+<p><span class="boxf">Penduga titik ± Margin of Error</span></p>
+<p>Selang kepercayaan \((1-\alpha)100\%\) dibangun dari penduga titik dan [[ms_se|margin of error]]. Margin of error \(=\) nilai kritis \(\times\) galat baku. Nilai kritis \(z\) yang paling sering dipakai:</p>
+<table><tr><th>Tingkat kepercayaan</th><th>90%</th><th>95%</th><th>99%</th></tr><tr><th>\(z_{\alpha/2}\)</th><td>1,645</td><td>1,96</td><td>2,576</td></tr></table>
+<h2>Memilih rumus untuk \(\mu\)</h2>
+<div class="flow"><div class="fl-root"><span>Selang kepercayaan \((1-\alpha)100\%\) bagi \(\mu\)</span></div><div class="fl-rows">
+<div class="fl-row"><div class="fl-cond">Simpangan baku populasi \(\sigma\) diketahui</div><div class="fl-f">\(\displaystyle \bar x\pm z_{\alpha/2}\,\frac{\sigma}{\sqrt n}\)</div></div>
+<div class="fl-row"><div class="fl-cond"><span>\(\sigma\) tidak diketahui dan <span class="red">\(n<30\)</span></span><small>\(db=n-1\)</small></div><div class="fl-f">\(\displaystyle \bar x\pm t_{\alpha/2;\,db}\,\frac{s}{\sqrt n}\)</div></div>
+<div class="fl-row"><div class="fl-cond"><span>\(\sigma\) tidak diketahui dan <span class="red">\(n\ge30\)</span></span></div><div class="fl-f">\(\displaystyle \bar x\pm z_{\alpha/2}\,\frac{s}{\sqrt n}\)</div></div>
+</div></div>
+<p>Lihat juga [[ms_skmean|selang kepercayaan rata-rata]].</p>
+<h2>Contoh: \(\sigma\) diketahui</h2>
+⟦soal|Dari sampel \(n=36\) diperoleh \(\bar x=10\). Simpangan baku populasi \(\sigma=2{,}5\). Buat selang kepercayaan 95% bagi \(\mu\).⟧
+⟦dik|\(n=36\), \(\bar x=10\), \(\sigma=2{,}5\). SK 95% \(\Rightarrow 1-\alpha=0{,}95\Rightarrow\alpha=0{,}05\).⟧
+⟦tanya|SK 95% bagi \(\mu\) dan simpulkan.⟧
+⟦langkah|1|Menentukan penduga titik|\(\bar x=10\)⟧
+⟦langkah|2|Menentukan standard error|\[SE(\bar x)=\frac{\sigma}{\sqrt n}=\frac{2{,}5}{\sqrt{36}}=\frac{2{,}5}{6}=0{,}4167\]⟧
+⟦langkah|3|Menentukan margin of error|\[MoE=z_{0{,}025}\cdot SE=1{,}96\times0{,}4167=0{,}817\]⟧
+⟦langkah|4|Menentukan selang kepercayaan|\[BB=10-0{,}817=9{,}183,\qquad BA=10+0{,}817=10{,}817\]\[9{,}183<\mu<10{,}817\]⟧
+⟦kes|Dengan tingkat kepercayaan 95%, rata-rata populasi berada di antara 9,183 dan 10,817. (Slide membulatkan SE menjadi 0,416, sehingga hasilnya 9,184 sampai 10,815.)⟧`},
+ {id:"metstat-7", t:"Selang kepercayaan: beda dua rata-rata (Pekan 6–7)", h:String.raw`<h2>Dua sampel saling bebas</h2>
+<p>Dua populasi \(\mu_1\) dan \(\mu_2\), masing-masing diambil sampel sendiri. Penduga titik bagi \(\mu_1-\mu_2\) adalah \(\bar x_1-\bar x_2\). Contoh pertanyaan: apakah ada perbedaan rata-rata waktu bermedia sosial antara laki-laki dan perempuan?</p>
+<p><span class="boxf">\(\bar x_1-\bar x_2\) ± Margin of Error</span></p>
+<h2>Memilih rumus</h2>
+<div class="flow"><div class="fl-root"><span>Selang kepercayaan \((1-\alpha)100\%\) bagi \(\mu_1-\mu_2\)</span></div><div class="fl-rows">
+<div class="fl-row"><div class="fl-cond">Ragam diketahui</div><div class="fl-f">\(\displaystyle (\bar x_1-\bar x_2)\pm z_{\alpha/2}\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}\)</div></div>
+<div class="fl-row"><div class="fl-cond"><span>Ragam tidak diketahui, <span class="red">\(\sigma_1^2=\sigma_2^2\)</span></span><small>\(db=n_1+n_2-2\)</small></div><div class="fl-f">\(\displaystyle (\bar x_1-\bar x_2)\pm t_{\alpha/2;\,db}\sqrt{s_{gab}^2\Big(\frac1{n_1}+\frac1{n_2}\Big)}\)</div></div>
+<div class="fl-row"><div class="fl-cond"><span>Ragam tidak diketahui, <span class="red">\(\sigma_1^2\ne\sigma_2^2\)</span></span><small>\(db=n-1\) (versi slide)</small></div><div class="fl-f">\(\displaystyle (\bar x_1-\bar x_2)\pm t_{\alpha/2;\,db}\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}\)</div></div>
+</div></div>
+<p>Ragam gabungan: \(\displaystyle s_{gab}^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}\) ([[ms_gabung|lihat definisi]]).</p>
+⟦catatan|Bila sampel besar (\(n_1\ge30\) dan \(n_2\ge30\)), \(t\) boleh didekati dengan \(z\) dan ragam populasi diduga dengan ragam sampel. Bila sampel kecil (\(n<30\)), tetap pakai \(t\).⟧
 <h2>Cara membaca selang \(\mu_1-\mu_2\)</h2>
-<p>Seluruhnya negatif \(\Rightarrow\mu_1<\mu_2\); seluruhnya positif \(\Rightarrow\mu_1>\mu_2\); memuat 0 \(\Rightarrow\) tidak dapat disimpulkan ada perbedaan.</p>
-<p>Contoh kopi: \(SE=\sqrt{40^2/50+30^2/45}\approx7{,}2\), selisih \(-10\), selang 95% \(=(-24{,}1;\,4{,}1)\), memuat 0, jadi tidak ada perbedaan. Contoh synchronous (\(\bar x_1=62{,}8\)) dan asynchronous (\(\bar x_2=77{,}3\)), \(s_{gab}^2=135{,}7\), \(SE=4{,}253\), \(t_{0{,}05;28}=1{,}701\): selang 90% \(=(-21{,}735;\,-7{,}265)\). Selang itu seluruhnya negatif, jadi \(\mu_1<\mu_2\) (kelompok asynchronous lebih tinggi).</p>
-<h2>Data berpasangan</h2>
-<p>Hitung selisih \(d_i=x_{i1}-x_{i2}\), lalu pakai [[ms_pasang|selang untuk rata-rata selisih]]. Contoh Shopee dan Tokopedia (\(n=7\)): \(\bar d\approx3{,}857\), \(s_d\approx4{,}741\), \(t_{0{,}025;6}=2{,}447\), selang 95% \(=(-0{,}528;\,8{,}242)\), memuat 0, jadi tidak ada perbedaan penjualan.</p>
+<p>Lihat posisi selang terhadap angka 0.</p>
+⟦garis|-8|5|μ₁−μ₂⟧
+⟦garis|-12|-3|μ₁−μ₂⟧
+⟦garis|3|12|μ₁−μ₂⟧
+<h2>Contoh 1: ragam diketahui</h2>
+⟦soal|Peneliti ingin tahu apakah ada perbedaan rata-rata konsumsi kopi harian laki-laki dan perempuan di daerah A. Sampel 50 laki-laki dan 45 perempuan; simpangan baku populasi 40 dan 30 gram/hari; rata-rata 750 dan 760 gram/hari. Buat selang kepercayaan 95% bagi selisih rata-rata.⟧
+⟦dik|\(n_1=50,\ n_2=45,\ \sigma_1=40,\ \sigma_2=30,\ \bar x_1=750,\ \bar x_2=760\). \(1-\alpha=0{,}95\Rightarrow\alpha=0{,}05\).⟧
+⟦langkah|1|Penduga titik|\(\bar x_1-\bar x_2=750-760=-10\)⟧
+⟦langkah|2|Standard error|\[SE=\sqrt{\frac{40^2}{50}+\frac{30^2}{45}}=\sqrt{32+20}\approx7{,}2\]⟧
+⟦langkah|3|Margin of error|\[MoE=z_{0{,}025}\cdot SE=1{,}96\times7{,}2=14{,}112\]⟧
+⟦langkah|4|Selang kepercayaan|\[BB=-10-14{,}112=-24{,}112,\qquad BA=-10+14{,}112=4{,}112\]\[-24{,}112<\mu_1-\mu_2<4{,}112\]⟧
+⟦garis|-24.112|4.112|μ₁−μ₂⟧
+⟦kes|Selang memuat 0 (negatif dan positif), jadi tidak dapat disimpulkan. Tidak ada perbedaan rata-rata kebutuhan kopi harian antara laki-laki dan perempuan.⟧
+<h2>Contoh 2: ragam tidak diketahui tetapi sama</h2>
+⟦soal|Efektivitas dua metode belajar online: synchronous (streaming) dan asynchronous (video), masing-masing 15 mahasiswa. Buat selang kepercayaan 90% bagi beda rata-rata nilai tes. Apakah synchronous lebih efektif? (Asumsi ragam kedua populasi sama.)⟧
+<table><tr><th>Synchronous</th><td>53</td><td>75</td><td>55</td><td>65</td><td>55</td><td>62</td><td>61</td><td>46</td><td>56</td><td>85</td><td>40</td><td>87</td><td>68</td><td>70</td><td>64</td></tr><tr><th>Asynchronous</th><td>61</td><td>90</td><td>70</td><td>89</td><td>89</td><td>69</td><td>67</td><td>84</td><td>86</td><td>85</td><td>72</td><td>69</td><td>69</td><td>72</td><td>88</td></tr></table>
+⟦dik|\(n_1=n_2=15\), \(\bar x_1=62{,}8\), \(\bar x_2=77{,}3\), \(s_1^2=170{,}2\), \(s_2^2=101{,}2\). \(1-\alpha=0{,}90\Rightarrow\alpha=0{,}1\).⟧
+⟦langkah|1|Penduga titik|\(\bar x_1-\bar x_2=62{,}8-77{,}3=-14{,}5\)⟧
+⟦langkah|2|Ragam gabungan dan standard error|\[s_{gab}^2=\frac{(15-1)(170{,}2)+(15-1)(101{,}2)}{15+15-2}=\frac{2382{,}8+1416{,}8}{28}=135{,}7\]\[SE=\sqrt{135{,}7\Big(\tfrac1{15}+\tfrac1{15}\Big)}=\sqrt{18{,}093}=4{,}253\]⟧
+⟦langkah|3|Margin of error|\[MoE=t_{0{,}05;\,28}\cdot SE=1{,}701\times4{,}253=7{,}235\]⟧
+⟦langkah|4|Selang kepercayaan|\[BB=-14{,}5-7{,}235=-21{,}735,\qquad BA=-14{,}5+7{,}235=-7{,}265\]\[-21{,}735<\mu_1-\mu_2<-7{,}265\]⟧
+⟦garis|-21.735|-7.265|μ₁−μ₂⟧
+⟦kes|Selang seluruhnya negatif, jadi \(\mu_1<\mu_2\): rata-rata nilai metode asynchronous lebih tinggi daripada synchronous.⟧
+⟦catatan|Di slide dosen, langkah 4 ditulis \(BB=7{,}265\) dan \(BA=21{,}735\) (positif), dengan kesimpulan "synchronous lebih efektif". Dari hitungan di atas, \(-14{,}5\mp7{,}235\) menghasilkan selang negatif, sehingga arah kesimpulannya terbalik. Konfirmasi ke dosen.⟧`},
+ {id:"metstat-8", t:"Selang kepercayaan: data berpasangan (Pekan 6–7)", h:String.raw`<h2>Data berpasangan</h2>
+<p>[[ms_pasang|Data berpasangan]] diperoleh dari dua perlakuan berbeda pada objek atau sampel yang sama. Hitung selisih tiap pasangan, lalu perlakukan sebagai satu sampel.</p>
+<table><tr><th>Pasangan</th><th>Sampel 1 \((x_1)\)</th><th>Sampel 2 \((x_2)\)</th><th>\(d=x_1-x_2\)</th></tr><tr><td>1</td><td>\(x_{11}\)</td><td>\(x_{12}\)</td><td>\(x_{11}-x_{12}\)</td></tr><tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr><tr><td>\(n\)</td><td>\(x_{n1}\)</td><td>\(x_{n2}\)</td><td>\(x_{n1}-x_{n2}\)</td></tr></table>
+\[d_i=x_{i1}-x_{i2},\qquad \bar d=\frac{\sum d_i}{n},\qquad s_d=\sqrt{\frac{\sum(d_i-\bar d)^2}{n-1}}\]
+<p><span class="boxf">\(\mu_d\approx\bar d\pm t_{\alpha/2;\,db}\,\dfrac{s_d}{\sqrt n}\)</span>, dengan \(db=n-1\)</p>
+<h2>Contoh: penjualan tas di Shopee dan Tokopedia</h2>
+⟦soal|Tentukan selang kepercayaan 95% bagi rata-rata selisih penjualan tas di Shopee dan Tokopedia. Dapatkah disimpulkan di marketplace mana penjualan lebih laris?⟧
+<table><tr><th>Penjual</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr><tr><th>Shopee</th><td>18</td><td>10</td><td>20</td><td>14</td><td>6</td><td>5</td><td>14</td></tr><tr><th>Tokopedia</th><td>8</td><td>9</td><td>10</td><td>11</td><td>8</td><td>5</td><td>9</td></tr><tr><th>Selisih \(d_i\)</th><td>10</td><td>1</td><td>10</td><td>3</td><td>−2</td><td>0</td><td>5</td></tr></table>
+⟦dik|\(n=7\), \(\sum d_i=27\). \(1-\alpha=0{,}95\Rightarrow\alpha=0{,}05\).⟧
+⟦langkah|1|Penduga titik|\[\bar d=\frac{27}{7}=3{,}857\]⟧
+⟦langkah|2|Standard error|\[s_d=\sqrt{\frac{(10-3{,}857)^2+(1-3{,}857)^2+\cdots+(5-3{,}857)^2}{7-1}}=4{,}741\]\[SE(\bar d)=\frac{s_d}{\sqrt n}=\frac{4{,}741}{\sqrt7}=1{,}792\]⟧
+⟦langkah|3|Margin of error|\[MoE=t_{0{,}025;\,6}\cdot SE=2{,}447\times1{,}792=4{,}385\]⟧
+⟦langkah|4|Selang kepercayaan|\[BB=3{,}857-4{,}385=-0{,}528,\qquad BA=3{,}857+4{,}385=8{,}242\]\[-0{,}528<\mu_d<8{,}242\]⟧
+⟦garis|-0.528|8.242|μ_d⟧
+⟦kes|Selang memuat 0, jadi tidak dapat disimpulkan marketplace mana yang lebih laris.⟧
+⟦catatan|Di slide tertulis \(s_d=4{,}471\), tetapi hitungan yang benar adalah 4,741 (SE 1,792 di slide sudah konsisten dengan 4,741), jadi hasil akhirnya sama.⟧`},
+ {id:"metstat-9", t:"Selang kepercayaan: proporsi dan beda dua proporsi (Pekan 6–7)", h:String.raw`<h2>Proporsi populasi</h2>
+<p>Proporsi sampel \(\hat p\) adalah penduga tak bias bagi proporsi populasi \(p\):</p>
+\[\hat p=\frac xn,\qquad x=\text{banyak kejadian sukses},\ n=\text{ukuran sampel}\]
+<p><span class="boxf">\(p\approx\hat p\pm z_{\alpha/2}\sqrt{\dfrac{\hat p(1-\hat p)}{n}}\)</span></p>
+<h3>Contoh: survei pilkada</h3>
+⟦soal|Survei 2.000 orang: 72% meminta pilkada 2020 ditunda. Tentukan selang kepercayaan 90% bagi proporsi masyarakat yang setuju ditunda.⟧
+⟦dik|\(\hat p=0{,}72\), \(n=2000\). \(1-\alpha=0{,}90\Rightarrow\alpha=0{,}1\).⟧
+⟦langkah|1|Penduga titik|\(\hat p=0{,}72\)⟧
+⟦langkah|2|Standard error|\[SE=\sqrt{\frac{0{,}72(1-0{,}72)}{2000}}=0{,}01004\]⟧
+⟦langkah|3|Margin of error|\[MoE=z_{0{,}05}\cdot SE=1{,}645\times0{,}01004=0{,}016516\]⟧
+⟦langkah|4|Selang kepercayaan|\[0{,}70348<p<0{,}7365\]⟧
+⟦kes|Persentase masyarakat yang setuju pilkada sebaiknya ditunda berkisar antara 70,35% dan 73,65% (kepercayaan 90%).⟧
 <h2>Beda dua proporsi</h2>
-<p>Lihat [[ms_skprop|selang beda proporsi]]. Contoh Instagram: \(\hat p_1=45/60=0{,}75\), \(\hat p_2=25/50=0{,}5\), selang 95% \(=(0{,}0733;\,0{,}4267)\), seluruhnya positif, jadi \(p_1>p_2\).</p>`},
- {id:"metstat-8", t:"Pengujian hipotesis (Pekan 9–10)", h:String.raw`<p class="hint">Bab ini belum ada file dosennya, jadi isinya ringkasan umum.</p>
+<p>Penduga titik \(\hat p_1=x_1/n_1\) dan \(\hat p_2=x_2/n_2\), sehingga penduga bagi \(p_1-p_2\) adalah \(\hat p_1-\hat p_2\). Lihat juga [[ms_skprop|selang kepercayaan proporsi]].</p>
+<p><span class="boxf">\(\hat p_1-\hat p_2\pm z_{\alpha/2}\sqrt{\dfrac{\hat p_1(1-\hat p_1)}{n_1}+\dfrac{\hat p_2(1-\hat p_2)}{n_2}}\)</span></p>
+<h3>Contoh: pengguna Instagram</h3>
+⟦soal|Dari 60 responden usia muda, 45 menggunakan Instagram; dari 50 responden usia tua, 25 menggunakan. Tentukan penduga titik bagi proporsi kedua kelompok, selang kepercayaan 95% bagi bedanya, dan kesimpulannya.⟧
+⟦dik|\(n_1=60,\ x_1=45,\ n_2=50,\ x_2=25\).⟧
+⟦langkah|1|Penduga titik|\[\hat p_1=\frac{45}{60}=0{,}75,\quad \hat p_2=\frac{25}{50}=0{,}5,\quad \hat p_1-\hat p_2=0{,}25\]⟧
+⟦langkah|2|Standard error|\[SE=\sqrt{\frac{0{,}75(0{,}25)}{60}+\frac{0{,}25(0{,}75)}{50}}=0{,}0902\]⟧
+⟦langkah|3|Margin of error|\[MoE=z_{0{,}025}\cdot SE=1{,}96\times0{,}0902=0{,}1767\]⟧
+⟦langkah|4|Selang kepercayaan|\[BB=0{,}25-0{,}1767=0{,}0733,\qquad BA=0{,}25+0{,}1767=0{,}4267\]\[0{,}0733<p_1-p_2<0{,}4267\]⟧
+⟦garis|0.0733|0.4267|p₁−p₂⟧
+⟦kes|Selang seluruhnya positif, jadi \(p_1>p_2\): pengguna Instagram dari golongan usia muda lebih banyak daripada usia tua.⟧`},
+ {id:"metstat-10", t:"Pengujian hipotesis (Pekan 9–10)", h:String.raw`<p class="hint">Bab ini belum ada file dosennya, jadi isinya ringkasan umum.</p>
 <h2>Gagasan</h2>
 <p>[[ms_hip|Pengujian hipotesis]] menilai pernyataan tentang parameter. \(H_0\) (hipotesis nol) adalah pernyataan yang diuji, \(H_1\) alternatifnya (satu arah atau dua arah).</p>
 <h2>Lima tahap</h2>
@@ -68,13 +148,13 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 <h2>Uji-z untuk rata-rata (\(\sigma\) diketahui)</h2>
 \[Z=\frac{\bar x-\mu_0}{\sigma/\sqrt n}\]
 <p>Contoh: \(\mu_0=75\), \(\bar x=78\), \(\sigma=9\), \(n=36\): \(Z=3/1{,}5=2\). Uji dua arah memberi \(p\approx0{,}0455<0{,}05\), jadi \(H_0\) ditolak.</p>`},
- {id:"metstat-9", t:"Uji-t dan perbandingan dua ragam (Pekan 10–11)", h:String.raw`<p class="hint">Bab ini belum ada file dosennya, jadi isinya ringkasan umum.</p>
+ {id:"metstat-11", t:"Uji-t dan perbandingan dua ragam (Pekan 10–11)", h:String.raw`<p class="hint">Bab ini belum ada file dosennya, jadi isinya ringkasan umum.</p>
 <h2>Uji-t</h2>
 <p>Dipakai bila \(\sigma\) tidak diketahui, terutama untuk sampel kecil dari populasi normal. [[ms_ujit|Tiga bentuknya]]: satu sampel, dua sampel bebas (ragam gabungan), dan data berpasangan.</p>
 <p>Contoh (data Shopee dan Tokopedia): \(t=3{,}857/1{,}792\approx2{,}152\) dengan \(db=6\). Nilai kritis dua arah \(2{,}447\), jadi \(H_0\) tidak ditolak. Ini konsisten dengan selang kepercayaan yang memuat 0.</p>
 <h2>Membandingkan dua ragam</h2>
 <p>[[ms_ujif|Uji-F]] menguji \(H_0:\sigma_1^2=\sigma_2^2\) dan biasanya dilakukan sebelum memilih memakai ragam gabungan atau tidak. Contoh \(s_1^2=170{,}2\), \(s_2^2=101{,}2\): \(F=1{,}68\) dengan \(db=(14,14)\).</p>`},
- {id:"metstat-10", t:"Analisis variansi / ANOVA (Pekan 12–16)", h:String.raw`<p class="hint">Bab ini belum ada file dosennya, jadi isinya ringkasan umum.</p>
+ {id:"metstat-12", t:"Analisis variansi / ANOVA (Pekan 12–16)", h:String.raw`<p class="hint">Bab ini belum ada file dosennya, jadi isinya ringkasan umum.</p>
 <h2>Gagasan</h2>
 <p>[[ms_anova|ANOVA satu arah]] menguji \(H_0:\mu_1=\mu_2=\cdots=\mu_k\) untuk \(k>2\) kelompok sekaligus. Ini menggantikan banyak uji-t berulang yang menaikkan galat tipe I. Asumsi: sampel bebas, populasi normal, ragam sama.</p>
 <h2>Tabel ANOVA</h2>
