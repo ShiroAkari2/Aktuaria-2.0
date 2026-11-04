@@ -154,3 +154,4 @@ main tr:nth-child(even) td{background:var(--chip)}
 @media(max-width:720px){.treewrap{width:auto;left:0;transform:none}}
 .wt{margin-top:64px}
 .wt-n{top:auto;bottom:calc(100% - 50px);max-width:42%}
+.pbox.teorema{border-left-color:var(--red);background:var(--chip)}.pbox.teorema .tag{background:var(--red)}
