@@ -24,10 +24,30 @@ const P = {
  ],
  "metstat-6":[
   {q:String.raw`Sebuah sekolah mengambil sampel 64 siswa dan memperoleh rata-rata nilai matematika 75. Simpangan baku populasi 8. Tentukan selang kepercayaan 95% bagi rata-rata nilai seluruh siswa.`,
-   a:String.raw`\(\sigma\) diketahui, pakai \(z\). \(SE=8/\sqrt{64}=1\), \(MoE=1{,}96\times1=1{,}96\). Selang: \(73{,}04<\mu<76{,}96\).`},
+   a:String.raw`⟦dik|\(n=64,\ \bar x=75,\ \sigma=8\)\(\Rightarrow\) \(\sigma\) diketahui, pakai \(z\); \(z_{0{,}025}=1{,}96\).⟧⟦langkah|1|Penduga titik|\(\bar x=75\)⟧⟦langkah|2|Standard error|\(SE=8/\sqrt{64}=1\)⟧⟦langkah|3|Margin of error|\(MoE=1{,}96\times1=1{,}96\)⟧⟦langkah|4|Selang|\(73{,}04<\mu<76{,}96\)⟧`},
   {q:String.raw`Dari 16 mahasiswa, rata-rata waktu belajar 5 jam per hari dengan simpangan baku sampel 2 jam. Populasi normal. Tentukan selang kepercayaan 95% bagi rata-rata waktu belajar.`,
-   a:String.raw`\(\sigma\) tidak diketahui dan \(n=16<30\), pakai \(t\) dengan \(db=15\), \(t_{0{,}025;15}=2{,}131\). \(SE=2/4=0{,}5\), \(MoE=2{,}131\times0{,}5=1{,}0655\). Selang: \(3{,}934<\mu<6{,}066\).`},
+   a:String.raw`⟦dik|\(n=16,\ \bar x=5,\ s=2\). \(\sigma\) tidak diketahui dan \(n<30\)\(\Rightarrow\) pakai \(t\), \(db=15\), \(t_{0{,}025;\,15}=2{,}131\).⟧⟦langkah|1|Penduga titik|\(\bar x=5\)⟧⟦langkah|2|Standard error|\(SE=2/\sqrt{16}=0{,}5\)⟧⟦langkah|3|Margin of error|\(MoE=2{,}131\times0{,}5=1{,}0655\)⟧⟦langkah|4|Selang|\(3{,}934<\mu<6{,}066\)⟧`},
+ ],
+ "metstat-7":[
+  {q:String.raw`Tugas 1. Dua kelas dengan metode berbeda: Kelas A (n = 25, rata-rata 78, s = 10) dan Kelas B (n = 25, rata-rata 72, s = 8). Tentukan selang kepercayaan 95% bagi beda dua rata-rata populasi. Sampel independen, ragam tidak diketahui dan tidak diasumsikan sama.`,
+   a:String.raw`⟦dik|\(n_1=n_2=25,\ \bar x_1=78,\ \bar x_2=72,\ s_1=10,\ s_2=8\). Ragam tidak sama\(\Rightarrow\) pakai rumus ketiga, \(db=n-1=24\), \(t_{0{,}025;\,24}=2{,}064\).⟧⟦langkah|1|Penduga titik|\(\bar x_1-\bar x_2=78-72=6\)⟧⟦langkah|2|Standard error|\[SE=\sqrt{\frac{10^2}{25}+\frac{8^2}{25}}=\sqrt{4+2{,}56}=2{,}561\]⟧⟦langkah|3|Margin of error|\(MoE=2{,}064\times2{,}561=5{,}286\)⟧⟦langkah|4|Selang|\(0{,}714<\mu_1-\mu_2<11{,}286\)⟧⟦garis|0.714|11.286|μ₁−μ₂⟧⟦kes|Selang seluruhnya positif, jadi \(\mu_1>\mu_2\): rata-rata Kelas A lebih tinggi.⟧⟦catatan|Dengan db Welch (sekitar 45,8; \(t=2{,}013\)) selangnya \((0{,}84;\,11{,}16)\), kesimpulannya sama.⟧`},
+  {q:String.raw`Tugas 2. Kelompok 1: n = 36, rata-rata 80, s = 6. Kelompok 2: n = 36, rata-rata 75, s = 8. Tentukan selang kepercayaan 95% bagi beda dua rata-rata populasi.`,
+   a:String.raw`⟦dik|\(n_1=n_2=36\ (\ge30)\)\(\Rightarrow\) \(t\) didekati \(z\), \(z_{0{,}025}=1{,}96\).⟧⟦langkah|1|Penduga titik|\(\bar x_1-\bar x_2=80-75=5\)⟧⟦langkah|2|Standard error|\[SE=\sqrt{\frac{6^2}{36}+\frac{8^2}{36}}=\sqrt{1+1{,}778}=1{,}667\]⟧⟦langkah|3|Margin of error|\(MoE=1{,}96\times1{,}667=3{,}267\)⟧⟦langkah|4|Selang|\(1{,}733<\mu_1-\mu_2<8{,}267\)⟧⟦garis|1.733|8.267|μ₁−μ₂⟧⟦kes|Selang seluruhnya positif, jadi \(\mu_1>\mu_2\).⟧`},
+ ],
+ "metstat-9":[
   {q:String.raw`Dari 400 orang yang diwawancarai, 240 menggunakan sabun merek tertentu. Tentukan selang kepercayaan 90% bagi proporsi populasi pengguna.`,
-   a:String.raw`\(\hat p=240/400=0{,}6\), \(SE=\sqrt{0{,}6\times0{,}4/400}\approx0{,}0245\), \(z_{0{,}05}=1{,}645\), \(MoE\approx0{,}0403\). Selang: \(0{,}5597<p<0{,}6403\).`},
+   a:String.raw`⟦langkah|1|Penduga titik|\(\hat p=240/400=0{,}6\)⟧⟦langkah|2|Standard error|\(SE=\sqrt{0{,}6\times0{,}4/400}=0{,}0245\)⟧⟦langkah|3|Margin of error|\(MoE=1{,}645\times0{,}0245=0{,}0403\)⟧⟦langkah|4|Selang|\(0{,}5597<p<0{,}6403\)⟧`},
+  {q:String.raw`Dari 100 mahasiswa laki-laki, 80 puas terhadap fasilitas kampus; dari 120 mahasiswa perempuan, 84 puas. Tentukan selang kepercayaan 95% bagi beda proporsi kepuasan laki-laki dan perempuan.`,
+   a:String.raw`⟦langkah|1|Penduga titik|\(\hat p_1=0{,}8,\ \hat p_2=84/120=0{,}7,\ \hat p_1-\hat p_2=0{,}10\)⟧⟦langkah|2|Standard error|\[SE=\sqrt{\frac{0{,}8(0{,}2)}{100}+\frac{0{,}7(0{,}3)}{120}}=\sqrt{0{,}00335}=0{,}0579\]⟧⟦langkah|3|Margin of error|\(MoE=1{,}96\times0{,}0579=0{,}1134\)⟧⟦langkah|4|Selang|\(-0{,}0134<p_1-p_2<0{,}2134\)⟧⟦garis|-0.0134|0.2134|p₁−p₂⟧⟦kes|Selang memuat 0, jadi tidak dapat disimpulkan ada perbedaan kepuasan laki-laki dan perempuan.⟧`},
+  {q:String.raw`Tugas 1. Dari 200 mahasiswa yang dipilih acak, 150 puas terhadap fasilitas kampus. Tentukan selang kepercayaan 95% bagi proporsi seluruh mahasiswa yang puas.`,
+   a:String.raw`⟦langkah|1|Penduga titik|\(\hat p=150/200=0{,}75\)⟧⟦langkah|2|Standard error|\(SE=\sqrt{0{,}75\times0{,}25/200}=0{,}0306\)⟧⟦langkah|3|Margin of error|\(MoE=1{,}96\times0{,}0306=0{,}0600\)⟧⟦langkah|4|Selang|\(0{,}690<p<0{,}810\)⟧`},
+  {q:String.raw`Tugas 2. Aplikasi belanja A: 150 dari 200 pengguna puas. Aplikasi B: 120 dari 180 pengguna puas. Tentukan selang kepercayaan 90% bagi beda dua proporsi.`,
+   a:String.raw`⟦langkah|1|Penduga titik|\(\hat p_A=0{,}75,\ \hat p_B=120/180=0{,}6667,\ \hat p_A-\hat p_B=0{,}0833\)⟧⟦langkah|2|Standard error|\[SE=\sqrt{\frac{0{,}75(0{,}25)}{200}+\frac{0{,}6667(0{,}3333)}{180}}=0{,}0466\]⟧⟦langkah|3|Margin of error|\(MoE=1{,}645\times0{,}0466=0{,}0767\)⟧⟦langkah|4|Selang|\(0{,}0067<p_A-p_B<0{,}1600\)⟧⟦garis|0.0067|0.16|p_A−p_B⟧⟦kes|Selang seluruhnya positif, jadi \(p_A>p_B\): proporsi pengguna yang puas pada aplikasi A lebih besar.⟧`},
+ ],
+ "statmat-4":[
+  {q:String.raw`Distribusi Bernoulli dengan parameter θ, 0 < θ < 1. Apakah Y₁ = ΣXᵢ statistik cukup lengkap? Penaksir takbias variansi minimum apa yang tunggal bagi θ?`,
+   a:String.raw`⟦langkah|1|Bentuk eksponensial|\[f(x;\theta)=\theta^x(1-\theta)^{1-x}=\exp\Big[x\ln\frac{\theta}{1-\theta}+\ln(1-\theta)\Big],\ x=0,1\]⟧⟦langkah|2|Komponen dan syarat|\(p(\theta)=\ln\frac{\theta}{1-\theta}\) (kontinu, tidak konstan), \(K(x)=x\) (tidak konstan), \(H(x)=0\), \(q(\theta)=\ln(1-\theta)\). Support \(\{0,1\}\) bebas dari \(\theta\).⟧⟦kes|\(Y_1=\sum X_i\) statistik cukup lengkap. Karena \(E[\bar X]=\theta\), \(\bar X\) adalah UMVUE bagi \(\theta\).⟧`},
+  {q:String.raw`Distribusi eksponensial dengan pdf f(x;θ) = (1/θ)e^(−x/θ), x > 0, θ > 0. Apakah Y₁ = ΣXᵢ statistik cukup lengkap? Cari UMVUE bagi θ.`,
+   a:String.raw`⟦langkah|1|Bentuk eksponensial|\[f(x;\theta)=\exp\Big[-\frac1\theta\,x-\ln\theta\Big],\ x>0\]⟧⟦langkah|2|Komponen dan syarat|\(p(\theta)=-1/\theta\) (kontinu, tidak konstan), \(K(x)=x\), \(K'(x)=1\ne0\), \(H(x)=0\), \(q(\theta)=-\ln\theta\). Support \((0,\infty)\) bebas dari \(\theta\).⟧⟦kes|\(Y_1=\sum X_i\) statistik cukup lengkap. \(E[X]=\theta\), sehingga \(E[\bar X]=\theta\) dan \(\bar X\) adalah UMVUE bagi \(\theta\).⟧`},
  ],
 };

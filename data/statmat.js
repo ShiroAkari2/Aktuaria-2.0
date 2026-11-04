@@ -100,6 +100,29 @@ COURSES.statmat = {t:"Statistika Matematika", desc:"Distribusi sampel dan CLT, p
 <p><b>Ditanyakan:</b> Statistik cukup dan taksiran.</p>
 <p><b>Penyelesaian:</b> \(Y=\sum X_i\sim\text{Poisson}(n\theta)\) dan rasio kepadatan \(\frac{y!}{n^y\prod x_i!}\) bebas \(\theta\), jadi \(Y\) cukup. \(\hat\theta=Y/n=2{,}5\).</p>
 <p><b>Interpretasi:</b> Cukup mengetahui jumlah 10; urutan data tidak menambah informasi tentang \(\theta\).</p></div>`},
+ {id:"statmat-4", t:"Statistik cukup lengkap dan UMVUE (Pekan 9–10)", h:String.raw`<h2>Statistik lengkap</h2>
+<p>Statistik \(Y\) disebut [[lengkap|lengkap]] bagi \(\theta\) bila \(E[u(Y)]=0\) untuk <b>semua</b> \(\theta\in\Omega\) hanya mungkin terjadi jika \(u(Y)=0\) dengan peluang 1. Membuktikannya dari definisi biasanya sulit, jadi dipakai jalan pintas lewat kelas eksponensial.</p>
+<h2>Kelas eksponensial (kasus regular)</h2>
+<p>Agar masuk [[keleksp|kelas eksponensial]], pdf atau pmf harus berbentuk:</p>
+<p><span class="boxf">\(f(x;\theta)=\exp\big[p(\theta)K(x)+H(x)+q(\theta)\big]\)</span></p>
+<table><tr><th>No</th><th>Syarat</th></tr>
+<tr><td>1</td><td>Support (himpunan \(x\) dengan \(f>0\)) tidak bergantung pada \(\theta\)</td></tr>
+<tr><td>2</td><td>\(p(\theta)\) fungsi kontinu dan tidak konstan (nontrivial) dari \(\theta\in\Omega\)</td></tr>
+<tr><td>3</td><td>Kasus kontinu: \(K'(x)\ne0\) dan \(H(x)\) kontinu pada support.<br>Kasus diskrit: \(K(x)\) tidak konstan pada support</td></tr></table>
+⟦teorema|Jika \(X_1,\dots,X_n\) sampel acak dari keluarga ini, maka \(Y_1=\sum_{i=1}^{n}K(X_i)\) adalah statistik cukup dan lengkap untuk \(\theta\).⟧
+<h2>Contoh 1: Normal \(N(\theta,\sigma^2)\), \(\sigma^2\) diketahui</h2>
+⟦langkah|1|Tulis pdf dalam bentuk eksponensial|\[f(x;\theta)=\frac1{\sigma\sqrt{2\pi}}\exp\Big[-\frac{(x-\theta)^2}{2\sigma^2}\Big]=\exp\Big[\frac{\theta}{\sigma^2}\,x-\frac{x^2}{2\sigma^2}-\frac{\theta^2}{2\sigma^2}-\ln(\sigma\sqrt{2\pi})\Big]\]Trik: \(a=\exp(\ln a)\) untuk memasukkan \(\frac1{\sigma\sqrt{2\pi}}\) ke eksponen.⟧
+⟦langkah|2|Kenali komponennya|\[p(\theta)=\frac{\theta}{\sigma^2},\quad K(x)=x,\quad H(x)=-\frac{x^2}{2\sigma^2}-\ln(\sigma\sqrt{2\pi}),\quad q(\theta)=-\frac{\theta^2}{2\sigma^2}\]⟧
+⟦langkah|3|Periksa syarat|Support \((-\infty,\infty)\) tidak memuat \(\theta\); \(p(\theta)=\theta/\sigma^2\) kontinu dan tidak konstan; \(K'(x)=1\ne0\) dan \(H(x)\) kontinu.⟧
+⟦langkah|4|Simpulkan|\[Y_1=\sum K(X_i)=\sum X_i=X_1+\cdots+X_n=n\bar X\]adalah statistik cukup lengkap bagi \(\theta\).⟧
+<h2>Contoh 2: Poisson dengan parameter \(\theta\), \(0<\theta<\infty\)</h2>
+⟦langkah|1|Bentuk eksponensial|\[f(x;\theta)=\frac{\theta^x e^{-\theta}}{x!}=\exp\big[(\ln\theta)\,x-\ln(x!)-\theta\big],\quad x=0,1,2,\dots\]⟧
+⟦langkah|2|Komponen dan syarat|\(p(\theta)=\ln\theta\), \(K(x)=x\), \(H(x)=-\ln(x!)\), \(q(\theta)=-\theta\). Support \(\{0,1,2,\dots\}\) bebas dari \(\theta\); \(\ln\theta\) kontinu dan tidak konstan pada \(0<\theta<\infty\); \(K(x)=x\) tidak konstan.⟧
+⟦langkah|3|Simpulkan|\(Y_1=\sum_{i=1}^{n}X_i\) adalah statistik cukup lengkap bagi \(\theta\).⟧
+<h2>Penaksir takbias variansi minimum yang tunggal</h2>
+<p>[[umvue|Teorema Lehmann–Scheffé]]: bila \(Y\) statistik cukup lengkap dan \(\varphi(Y)\) takbias untuk \(\theta\), maka \(\varphi(Y)\) adalah penaksir takbias variansi minimum (UMVUE) yang <b>tunggal</b>.</p>
+⟦kes|Pada kedua contoh, \(E[\bar X]=\theta\) dan \(\bar X=Y_1/n\) adalah fungsi dari \(Y_1\). Jadi \(\bar X\) adalah UMVUE bagi \(\theta\) (normal dan Poisson).⟧
+⟦catatan|Cek tambahan untuk Poisson: \(\operatorname{Var}(\bar X)=\theta/n\), sama dengan batas bawah Rao–Cramér. Bila syarat 1 gagal, misalnya \(U(0,\theta)\) yang supportnya \((0,\theta)\) bergantung pada \(\theta\), teorema kelas eksponensial tidak boleh dipakai.⟧`},
  {id:"statmat-6", t:"Selang kepercayaan (Pekan 11–12)", h:String.raw`<h2>Gagasan</h2>
 <p>[[sel|Selang kepercayaan]] \(100(1-\alpha)\%\) dibangun dari [[pivot|pivot]]. Tafsirannya: bila prosedur diulang, \(100(1-\alpha)\%\) selang yang terbentuk memuat parameter. Parameter tetap; selanglah yang acak.</p>
 <h2>Mean</h2>
