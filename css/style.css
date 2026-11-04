@@ -100,3 +100,57 @@ a.crs:hover{text-decoration:underline}
 main h3{font-size:17px;margin:26px 0 6px;font-weight:700;color:var(--ink)}
 .fl-cond small{display:block;font-weight:500;font-size:13px;opacity:.92;margin-top:4px}
 .fl-cond .red{color:#ffe08a}
+
+/* ===== Tabel gaya slide (header biru, baris selang-seling) ===== */
+main table{border-collapse:collapse;margin:16px 0;font:15px Inter,system-ui,sans-serif;display:block;overflow-x:auto}
+main th{background:var(--accent);color:var(--bg);padding:7px 12px;text-align:center;border:1px solid var(--accent);font-weight:700}
+main td{padding:6px 12px;text-align:center;border:1px solid var(--line)}
+main tr:nth-child(even) td{background:var(--chip)}
+/* ===== Diagram bercabang (pohon keputusan) ===== */
+.treewrap{overflow-x:auto;margin:18px 0;padding:4px}
+.tree{display:flex;align-items:center;min-width:700px}
+.tr-node{flex:none;position:relative;border:2px solid var(--accent);border-radius:10px;padding:10px 14px;background:var(--card);font:15px/1.5 Inter,system-ui,sans-serif;max-width:320px}
+.tr-node.root{background:var(--chip);color:var(--accent);font-weight:700;text-align:center;max-width:210px}
+.tr-node.cond{background:var(--accent);color:var(--bg);font-weight:700;text-align:center;max-width:200px}
+.tr-node.ok{border-color:#1a7f37;background:#e6f4ea;color:#14532d;font-weight:700;text-align:center}
+.tr-node.no{border-color:var(--red);background:#fdeaea;color:#7a0000;font-weight:700;text-align:center}
+@media(prefers-color-scheme:dark){.tr-node.ok{background:#12301c;color:#9be3ad;border-color:#3fb950}.tr-node.no{background:#3a1717;color:#ffb4b4}}
+.tr-kids{display:flex;flex-direction:column;margin-left:36px;position:relative}
+.tr-kids::before{content:"";position:absolute;left:-36px;top:50%;width:36px;border-top:2px solid var(--accent)}
+.tr-kid{position:relative;display:flex;align-items:center;padding:7px 0 7px 36px}
+.tr-kid::before{content:"";position:absolute;left:0;top:50%;width:36px;border-top:2px solid var(--accent)}
+.tr-kid::after{content:"";position:absolute;left:0;top:0;bottom:0;border-left:2px solid var(--accent)}
+.tr-kid:first-child::after{top:50%}.tr-kid:last-child::after{bottom:50%}.tr-kid:only-child::after{display:none}
+.tr-kid>.tr-node::before{content:"";position:absolute;left:-9px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-left:9px solid var(--accent);border-right:0}
+.tr-kid.lab{padding-left:130px}
+.tr-kid.lab::before{width:130px}
+.tr-lab{position:absolute;left:6px;width:116px;top:calc(50% - 30px);text-align:center;font:700 14px Inter,system-ui,sans-serif}
+@media(max-width:720px){
+ .tree{min-width:0;flex-direction:column;align-items:stretch}.tr-node{max-width:none!important}
+ .tr-kids{margin:6px 0 0 14px;padding-left:12px;border-left:3px solid var(--chip)}
+ .tr-kids::before,.tr-kid::before,.tr-kid::after,.tr-kid>.tr-node::before{display:none}
+ .tr-kid,.tr-kid.lab{padding:6px 0;flex-direction:column;align-items:stretch}.tr-lab{position:static;width:auto;text-align:left;margin-bottom:2px}}
+/* ===== Alur proses bertahap ===== */
+.proc{display:flex;flex-wrap:wrap;margin:16px 0}
+.pr{flex:1 1 130px;position:relative;background:var(--card);border:2px solid var(--accent);border-radius:10px;padding:9px 11px;font:14px/1.45 Inter,system-ui,sans-serif;margin:5px 16px 5px 0}
+.pr b{display:block;color:var(--accent);font-size:15px;margin-bottom:2px}
+.pr:not(:last-child)::after{content:"\27A4";position:absolute;right:-17px;top:50%;transform:translateY(-50%);color:var(--accent)}
+/* ===== Garis waktu ===== */
+.wt{position:relative;height:150px;margin:18px 14px 8px}
+.wt-line{position:absolute;left:0;right:0;top:72px;height:4px;background:var(--muted);border-radius:2px}
+.wt-bar{position:absolute;top:70px;height:8px;background:#f0a830;border-radius:6px}
+.wt-d{position:absolute;top:67px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--ink)}
+.wt-t{position:absolute;top:96px;transform:translateX(-50%);font:600 15px Inter,system-ui,sans-serif;color:var(--muted);white-space:nowrap}
+.wt-b{position:absolute;top:58px;transform:translateX(-50%);min-width:30px;height:30px;line-height:30px;padding:0 9px;border-radius:16px;background:var(--accent);color:var(--bg);font:700 14px/30px Inter,system-ui,sans-serif;text-align:center;z-index:2}
+.wt-n{position:absolute;top:0;transform:translateX(-50%);text-align:center;font:600 14px/1.4 Inter,system-ui,sans-serif;max-width:36%;color:var(--ink)}
+.wt-n.l{transform:none;text-align:left;left:0!important}.wt-n.r{transform:none;text-align:right;left:auto!important;right:0}
+/* diagram bercabang boleh lebih lebar dari kolom teks */
+.treewrap{width:min(980px,calc(100vw - 48px));position:relative;left:50%;transform:translateX(-50%)}
+.tree{min-width:0}
+.tr-node.root{max-width:190px}
+.tr-kids{margin-left:30px}.tr-kids::before{left:-30px;width:30px}
+.tr-kid{padding-left:30px}.tr-kid::before{width:30px}
+.tr-kid.lab{padding-left:112px}.tr-kid.lab::before{width:112px}.tr-lab{width:98px}
+@media(max-width:720px){.treewrap{width:auto;left:0;transform:none}}
+.wt{margin-top:64px}
+.wt-n{top:auto;bottom:calc(100% - 50px);max-width:42%}
