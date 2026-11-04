@@ -1,10 +1,10 @@
-const APP_VERSION='2.1 (3 Nov 2026)';
+const APP_VERSION='2.2 (4 Nov 2026)';
 /* ===== Mesin halaman: kartu hover, navigasi bab, latihan. Jarang perlu diubah. ===== */
 /* Data dibaca dari: data/glosarium.js (T), data/<matkul>.js (COURSES), data/latihan.js (P) */
 
 const esc = s => s.replace(/\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)/g, m => m.replace(/</g,'&lt;').replace(/>/g,'&gt;'));
 /* Komponen tampilan di dalam teks bab (tulis di data/*.js):
-   ⟦soal|teks⟧  ⟦dik|teks⟧  ⟦tanya|teks⟧  ⟦kes|teks⟧  ⟦catatan|teks⟧
+   ⟦soal|teks⟧  ⟦teorema|teks⟧  ⟦dik|teks⟧  ⟦tanya|teks⟧  ⟦kes|teks⟧  ⟦catatan|teks⟧
    ⟦waktu|0,1,⋯,k,k+1|sorot 2-3 (boleh kosong)|titik bulat 3:1;4:1|catatan 0:teks;3:teks⟧
    ⟦langkah|nomor|judul|isi⟧   ⟦garis|batas bawah|batas atas|simbol, mis. μ₁−μ₂⟧ */
 function garis(lo,hi,sim){
@@ -40,7 +40,7 @@ const komp = s => s.replace(/⟦([\s\S]*?)⟧/g,(m,b)=>{
  if(t==='waktu') return waktu(p[1],p[2],p[3],p.slice(4).join('|'));
  if(t==='garis') return '<div class="nl">'+garis(p[1],p[2],p[3])+'</div>';
  if(t==='langkah') return '<div class="stp"><span class="no">'+p[1]+'</span><div class="stp-b"><div class="stp-t">'+p[2]+'</div><div class="stp-c">'+p.slice(3).join('|')+'</div></div></div>';
- const lab={soal:'Soal',dik:'Diketahui',tanya:'Ditanyakan',kes:'Kesimpulan',catatan:'Catatan'}[t];
+ const lab={soal:'Soal',dik:'Diketahui',tanya:'Ditanyakan',kes:'Kesimpulan',catatan:'Catatan',teorema:'Teorema'}[t];
  return lab?'<div class="pbox '+t+'"><span class="tag">'+lab+'</span> '+p.slice(1).join('|')+'</div>':m;
 });
 const link = s => komp(esc(s)).replace(/\[\[(\w+)\|([^\]]+)\]\]/g,'<span class="term" data-t="$1">$2</span>');
