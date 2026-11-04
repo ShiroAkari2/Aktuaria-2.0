@@ -1,9 +1,11 @@
+const APP_VERSION='2.1 (3 Nov 2026)';
 /* ===== Mesin halaman: kartu hover, navigasi bab, latihan. Jarang perlu diubah. ===== */
 /* Data dibaca dari: data/glosarium.js (T), data/<matkul>.js (COURSES), data/latihan.js (P) */
 
 const esc = s => s.replace(/\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)/g, m => m.replace(/</g,'&lt;').replace(/>/g,'&gt;'));
 /* Komponen tampilan di dalam teks bab (tulis di data/*.js):
    ⟦soal|teks⟧  ⟦dik|teks⟧  ⟦tanya|teks⟧  ⟦kes|teks⟧  ⟦catatan|teks⟧
+   ⟦waktu|0,1,⋯,k,k+1|sorot 2-3 (boleh kosong)|titik bulat 3:1;4:1|catatan 0:teks;3:teks⟧
    ⟦langkah|nomor|judul|isi⟧   ⟦garis|batas bawah|batas atas|simbol, mis. μ₁−μ₂⟧ */
 function garis(lo,hi,sim){
  lo=+lo; hi=+hi; sim=sim||'μ';
@@ -24,8 +26,18 @@ function garis(lo,hi,sim){
   +'<text class="nl-v" x="'+(W-8)+'" y="'+(y-14)+'">'+sim+'</text></svg><div class="nl-msg">'+msg+'</div>';
  return s;
 }
+function waktu(ticks,bar,bub,notes){
+ const T=ticks.split(','), N=T.length, pos=i=>((i+.5)/N*100).toFixed(2)+'%';
+ let h='<div class="wt"><div class="wt-line"></div>';
+ if(bar&&bar.trim()){ const r=bar.split('-').map(Number); h+='<div class="wt-bar" style="left:'+pos(r[0])+';width:'+((r[1]-r[0])/N*100).toFixed(2)+'%"></div>'; }
+ T.forEach((t,i)=>{ h+='<span class="wt-d" style="left:'+pos(i)+'"></span><span class="wt-t" style="left:'+pos(i)+'">'+t.trim()+'</span>'; });
+ (bub||'').split(';').filter(x=>x.trim()).forEach(x=>{ const k=x.indexOf(':'); h+='<span class="wt-b" style="left:'+pos(+x.slice(0,k))+'">'+x.slice(k+1)+'</span>'; });
+ (notes||'').split(';').filter(x=>x.trim()).forEach(x=>{ const k=x.indexOf(':'), i=+x.slice(0,k); h+='<span class="wt-n'+(i===0?' l':i===N-1?' r':'')+'" style="left:'+pos(i)+'">'+x.slice(k+1)+'</span>'; });
+ return h+'</div>';
+}
 const komp = s => s.replace(/⟦([\s\S]*?)⟧/g,(m,b)=>{
  const p=b.split('|'), t=p[0].trim();
+ if(t==='waktu') return waktu(p[1],p[2],p[3],p.slice(4).join('|'));
  if(t==='garis') return '<div class="nl">'+garis(p[1],p[2],p[3])+'</div>';
  if(t==='langkah') return '<div class="stp"><span class="no">'+p[1]+'</span><div class="stp-b"><div class="stp-t">'+p[2]+'</div><div class="stp-c">'+p.slice(3).join('|')+'</div></div></div>';
  const lab={soal:'Soal',dik:'Diketahui',tanya:'Ditanyakan',kes:'Kesimpulan',catatan:'Catatan'}[t];
@@ -84,7 +96,7 @@ function showLobby(){
  el.innerHTML='<div class="hero"><p class="by">By ShiroAkari</p><h1>Catatan Aktuaria</h1><p class="sub">Catatan belajar dengan definisi, rumus, dan contoh yang muncul saat kursor diarahkan ke istilah.</p>'
   +(lc?'<a class="resume" href="#'+lc.id+'">Lanjutkan belajar<span>'+lc.t+' · '+C[lc.k].t+'</span></a>':'')+'</div>'
   +'<div class="grid">'+Object.entries(C).map(([k,c])=>'<a class="ccard" href="#'+k+'"><h2>'+c.t+'</h2><p>'+(c.desc||'')+'</p><span class="meta">'+c.ch.length+' bab</span></a>').join('')+'</div>'
-  +'<p class="foot">'+Object.keys(C).length+' mata kuliah · '+Object.keys(T).length+' istilah di glosarium</p>';
+  +'<p class="foot">'+Object.keys(C).length+' mata kuliah · '+Object.keys(T).length+' istilah di glosarium · versi '+APP_VERSION+'</p>';
  document.title='Catatan Aktuaria'; setHash('home'); scrollTo(0,0);
 }
 
