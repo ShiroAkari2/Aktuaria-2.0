@@ -13,7 +13,11 @@ COURSES.pma = {t:"Pengantar Matematika Aktuaria", desc:"Suku bunga, tabel mortal
  {id:"pma-n2", t:"Anuitas awal, akhir, dan kontinu (Pekan 2)", h:String.raw`<h2>Anuitas pasti</h2>
 <p>Pembayaran 1 per tahun selama \(n\) tahun: [[awal|anuitas awal]], [[pasti|anuitas akhir]], kontinu, dan \(m\) kali setahun.</p>
 \[\ddot a_{\overline n|}=\frac{1-v^n}{d},\quad a_{\overline n|}=\frac{1-v^n}{i},\quad \bar a_{\overline n|}=\int_0^nv^t\,dt=\frac{1-v^n}{\delta},\quad \ddot a^{(m)}_{\overline n|}=\frac{1-v^n}{d^{(m)}}\]
-<p>Karena \(d\lt\delta\lt i\): \(a_{\overline n|}\lt\bar a_{\overline n|}\lt\ddot a_{\overline n|}\). Hubungan: \(\ddot a_{\overline n|}=(1+i)a_{\overline n|}=1+a_{\overline{n-1}|}\). Perpetuitas: \(\frac1i\), \(\frac1\delta\), \(\frac1d\).</p><h2>Contoh soal dan pembahasan</h2>
+<p>Karena \(d\lt\delta\lt i\): \(a_{\overline n|}\lt\bar a_{\overline n|}\lt\ddot a_{\overline n|}\). Hubungan: \(\ddot a_{\overline n|}=(1+i)a_{\overline n|}=1+a_{\overline{n-1}|}\). Perpetuitas: \(\frac1i\), \(\frac1\delta\), \(\frac1d\).</p>
+<h3>Garis waktu pembayaran</h3>
+⟦waktu|0,1,2,⋯,n−1,n||1:1;2:1;4:1;5:1|2:Anuitas akhir \(a_{\overline n|}\): dibayar di akhir periode (waktu \(1,2,\dots,n\))⟧
+⟦waktu|0,1,2,⋯,n−1,n||0:1;1:1;2:1;4:1|2:Anuitas awal \(\ddot a_{\overline n|}\): dibayar di awal periode (waktu \(0,1,\dots,n-1\))⟧
+<h2>Contoh soal dan pembahasan</h2>
 <div class="soal"><p><b>Soal.</b> Hitung \(\ddot a_{\overline{10}|}\), \(a_{\overline{10}|}\), dan \(\bar a_{\overline{10}|}\) pada \(i=5\%\).</p>
 <p><b>Diketahui:</b> \(i=5\%\), \(n=10\), \(v^{10}=0{,}6139\).</p>
 <p><b>Ditanyakan:</b> Tiga nilai anuitas.</p>
@@ -52,6 +56,7 @@ COURSES.pma = {t:"Pengantar Matematika Aktuaria", desc:"Suku bunga, tabel mortal
 <p><b>Penyelesaian:</b> UDD: \(0{,}5(0{,}1)=0{,}05\). CFM: \(1-0{,}9^{0{,}5}=0{,}0513\). Balducci: \({}_{0{,}5}p_x=\frac{0{,}9}{1-0{,}5(0{,}1)}=0{,}9474\), jadi \({}_{0{,}5}q_x=0{,}0526\). Rekursi: \(A_x=\frac{0{,}1+0{,}9(0{,}3)}{1{,}05}=0{,}3524\).</p>
 <p><b>Interpretasi:</b> Ketiga asumsi hanya berbeda tipis; UDD terkecil dan Balducci terbesar untuk setengah tahun pertama.</p></div>`},
  {id:"pma-2", t:"Asuransi jiwa waktu diskrit (Pekan 7–8)", h:String.raw`<p>Santunan dibayar di akhir tahun kematian. [[pvrv|Z]] adalah nilai sekarang manfaat; kematian di tahun ke-\(k+1\) berarti \(K_x=k\) dan dibayar di waktu \(k+1\).</p>
+⟦waktu|0,1,⋯,k,k+1,⋯|3-4|4:1|0:Polis diterbitkan pada usia \(x\);4:Meninggal di tahun ke-\(k+1\): manfaat 1 dibayar di waktu \(k+1\)⟧
 <h2>Berjangka ([[term|term]])</h2>
 \[Z=\begin{cases}v^{K_x+1},&K_x=0,\dots,n-1\\0,&K_x\ge n\end{cases}\qquad A^1_{x:\overline n|}=\sum_{k=0}^{n-1}v^{k+1}\,{}_{k|}q_x\]
 <h2>Seumur hidup</h2>

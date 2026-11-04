@@ -17,7 +17,15 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 <h2>Kuartil, desil, persentil</h2>
 <p>[[ms_kuartil|Kuartil]] membagi data terurut menjadi 4 bagian, desil 10 bagian, persentil 100 bagian. Untuk data tunggal: \(Q_2\) adalah median, \(Q_1\) median separuh kiri, \(Q_3\) median separuh kanan.</p>
 <h2>Ukuran penyebaran</h2>
-<p>Rentang \(=x_{maks}-x_{min}\); rentang interkuartil \(=Q_3-Q_1\); simpangan rata-rata \(=\frac{\sum|x_i-\bar x|}{n}\); dan [[ms_ragam|ragam dan simpangan baku]] (rumus sampel memakai \(n-1\), populasi memakai \(N\)). Contoh: data 2, 4, 6, 8 memberi \(\bar x=5\) dan \(s^2=20/3\approx6{,}67\).</p>`},
+<p>Rentang \(=x_{maks}-x_{min}\); rentang interkuartil \(=Q_3-Q_1\); simpangan rata-rata \(=\frac{\sum|x_i-\bar x|}{n}\); dan [[ms_ragam|ragam dan simpangan baku]] (rumus sampel memakai \(n-1\), populasi memakai \(N\)). Contoh: data 2, 4, 6, 8 memberi \(\bar x=5\) dan \(s^2=20/3\approx6{,}67\).</p>
+<h2>Contoh: data berkelompok</h2>
+<p>Nilai 40 mahasiswa disajikan sebagai [[ms_distfrek|distribusi frekuensi]]. Tepi kelas \(=\) batas bawah \(-0{,}5\) dan batas atas \(+0{,}5\); lebar kelas \(c=10\).</p>
+<table><tr><th>Kelas</th><th>Tepi kelas</th><th>Titik tengah \(m\)</th><th>\(f\)</th><th>\(F\) kumulatif</th><th>\(f\cdot m\)</th></tr><tr><td>40–49</td><td>39,5–49,5</td><td>44,5</td><td>2</td><td>2</td><td>89</td></tr><tr><td>50–59</td><td>49,5–59,5</td><td>54,5</td><td>4</td><td>6</td><td>218</td></tr><tr><td>60–69</td><td>59,5–69,5</td><td>64,5</td><td>6</td><td>12</td><td>387</td></tr><tr><td>70–79</td><td>69,5–79,5</td><td>74,5</td><td>15</td><td>27</td><td>1.117,5</td></tr><tr><td>80–89</td><td>79,5–89,5</td><td>84,5</td><td>9</td><td>36</td><td>760,5</td></tr><tr><td>90–99</td><td>89,5–99,5</td><td>94,5</td><td>4</td><td>40</td><td>378</td></tr><tr><th colspan="3">Jumlah</th><th>40</th><th></th><th>2.950</th></tr></table>
+⟦langkah|1|Mean|\[\bar x=\frac{\sum f\,m}{\sum f}=\frac{2950}{40}=73{,}75\]⟧
+⟦langkah|2|Median|Letak \(n/2=20\) jatuh di kelas 70–79 (\(L=69{,}5\), \(F=12\), \(f=15\)).\[Me=69{,}5+\frac{20-12}{15}\times10=74{,}83\]⟧
+⟦langkah|3|Modus|Kelas modus 70–79: \(d_1=15-6=9\), \(d_2=15-9=6\).\[Mo=69{,}5+\frac{9}{9+6}\times10=75{,}5\]⟧
+⟦langkah|4|Kuartil|\(Q_1\): letak 10, kelas 60–69 (\(L=59{,}5,\ F=6,\ f=6\)). \(Q_3\): letak 30, kelas 80–89 (\(L=79{,}5,\ F=27,\ f=9\)).\[Q_1=59{,}5+\frac{10-6}{6}\times10=66{,}17,\qquad Q_3=79{,}5+\frac{30-27}{9}\times10=82{,}83\]⟧
+`},
  {id:"metstat-3", t:"Peubah acak diskrit dan kontinu (Pekan 2–3)", h:String.raw`<p class="hint">Bab ini belum ada file dosennya, jadi isinya ringkasan umum.</p>
 <h2>Peubah acak</h2>
 <p>[[rv|Peubah acak]] \(X\) memberi angka pada hasil percobaan: diskrit (hasil menghitung) atau kontinu (hasil mengukur).</p>
@@ -47,11 +55,12 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 <p>Selang kepercayaan \((1-\alpha)100\%\) dibangun dari penduga titik dan [[ms_se|margin of error]]. Margin of error \(=\) nilai kritis \(\times\) galat baku. Nilai kritis \(z\) yang paling sering dipakai:</p>
 <table><tr><th>Tingkat kepercayaan</th><th>90%</th><th>95%</th><th>99%</th></tr><tr><th>\(z_{\alpha/2}\)</th><td>1,645</td><td>1,96</td><td>2,576</td></tr></table>
 <h2>Memilih rumus untuk \(\mu\)</h2>
-<div class="flow"><div class="fl-root"><span>Selang kepercayaan \((1-\alpha)100\%\) bagi \(\mu\)</span></div><div class="fl-rows">
-<div class="fl-row"><div class="fl-cond">Simpangan baku populasi \(\sigma\) diketahui</div><div class="fl-f">\(\displaystyle \bar x\pm z_{\alpha/2}\,\frac{\sigma}{\sqrt n}\)</div></div>
-<div class="fl-row"><div class="fl-cond"><span>\(\sigma\) tidak diketahui dan <span class="red">\(n<30\)</span></span><small>\(db=n-1\)</small></div><div class="fl-f">\(\displaystyle \bar x\pm t_{\alpha/2;\,db}\,\frac{s}{\sqrt n}\)</div></div>
-<div class="fl-row"><div class="fl-cond"><span>\(\sigma\) tidak diketahui dan <span class="red">\(n\ge30\)</span></span></div><div class="fl-f">\(\displaystyle \bar x\pm z_{\alpha/2}\,\frac{s}{\sqrt n}\)</div></div>
-</div></div>
+<div class="treewrap"><div class="tree"><div class="tr-node root">Selang kepercayaan \((1-\alpha)100\%\) bagi \(\mu\)</div><div class="tr-kids">
+<div class="tr-kid"><div class="tr-node cond">\(\sigma\) diketahui</div><div class="tr-kids"><div class="tr-kid"><div class="tr-node">\(\displaystyle \bar x\pm z_{\alpha/2}\,\frac{\sigma}{\sqrt n}\)</div></div></div></div>
+<div class="tr-kid"><div class="tr-node cond">\(\sigma\) tidak diketahui</div><div class="tr-kids">
+<div class="tr-kid lab"><span class="tr-lab red">\(n<30\)</span><div class="tr-node">\(\displaystyle \bar x\pm t_{\alpha/2;\,db}\,\frac{s}{\sqrt n}\)<br>\(db=n-1\)</div></div>
+<div class="tr-kid lab"><span class="tr-lab red">\(n\ge30\)</span><div class="tr-node">\(\displaystyle \bar x\pm z_{\alpha/2}\,\frac{s}{\sqrt n}\)</div></div>
+</div></div></div></div></div>
 <p>Lihat juga [[ms_skmean|selang kepercayaan rata-rata]].</p>
 <h2>Contoh: \(\sigma\) diketahui</h2>
 ⟦soal|Dari sampel \(n=36\) diperoleh \(\bar x=10\). Simpangan baku populasi \(\sigma=2{,}5\). Buat selang kepercayaan 95% bagi \(\mu\).⟧
@@ -66,11 +75,12 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 <p>Dua populasi \(\mu_1\) dan \(\mu_2\), masing-masing diambil sampel sendiri. Penduga titik bagi \(\mu_1-\mu_2\) adalah \(\bar x_1-\bar x_2\). Contoh pertanyaan: apakah ada perbedaan rata-rata waktu bermedia sosial antara laki-laki dan perempuan?</p>
 <p><span class="boxf">\(\bar x_1-\bar x_2\) ± Margin of Error</span></p>
 <h2>Memilih rumus</h2>
-<div class="flow"><div class="fl-root"><span>Selang kepercayaan \((1-\alpha)100\%\) bagi \(\mu_1-\mu_2\)</span></div><div class="fl-rows">
-<div class="fl-row"><div class="fl-cond">Ragam diketahui</div><div class="fl-f">\(\displaystyle (\bar x_1-\bar x_2)\pm z_{\alpha/2}\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}\)</div></div>
-<div class="fl-row"><div class="fl-cond"><span>Ragam tidak diketahui, <span class="red">\(\sigma_1^2=\sigma_2^2\)</span></span><small>\(db=n_1+n_2-2\)</small></div><div class="fl-f">\(\displaystyle (\bar x_1-\bar x_2)\pm t_{\alpha/2;\,db}\sqrt{s_{gab}^2\Big(\frac1{n_1}+\frac1{n_2}\Big)}\)</div></div>
-<div class="fl-row"><div class="fl-cond"><span>Ragam tidak diketahui, <span class="red">\(\sigma_1^2\ne\sigma_2^2\)</span></span><small>\(db=n-1\) (versi slide)</small></div><div class="fl-f">\(\displaystyle (\bar x_1-\bar x_2)\pm t_{\alpha/2;\,db}\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}\)</div></div>
-</div></div>
+<div class="treewrap"><div class="tree"><div class="tr-node root">Selang kepercayaan \((1-\alpha)100\%\) bagi \(\mu_1-\mu_2\)</div><div class="tr-kids">
+<div class="tr-kid"><div class="tr-node cond">Ragam diketahui</div><div class="tr-kids"><div class="tr-kid"><div class="tr-node">\(\displaystyle (\bar x_1-\bar x_2)\pm z_{\alpha/2}\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}\)</div></div></div></div>
+<div class="tr-kid"><div class="tr-node cond">Ragam tidak diketahui</div><div class="tr-kids">
+<div class="tr-kid lab"><span class="tr-lab red">\(\sigma_1^2=\sigma_2^2\)</span><div class="tr-node">\(\displaystyle (\bar x_1-\bar x_2)\pm t_{\alpha/2;\,db}\sqrt{s_{gab}^2\Big(\frac1{n_1}+\frac1{n_2}\Big)}\)<br>\(db=n_1+n_2-2\)</div></div>
+<div class="tr-kid lab"><span class="tr-lab red">\(\sigma_1^2\ne\sigma_2^2\)</span><div class="tr-node">\(\displaystyle (\bar x_1-\bar x_2)\pm t_{\alpha/2;\,db}\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}\)<br>\(db=n-1\) (versi slide)</div></div>
+</div></div></div></div></div>
 <p>Ragam gabungan: \(\displaystyle s_{gab}^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}\) ([[ms_gabung|lihat definisi]]).</p>
 ⟦catatan|Bila sampel besar (\(n_1\ge30\) dan \(n_2\ge30\)), \(t\) boleh didekati dengan \(z\) dan ragam populasi diduga dengan ragam sampel. Bila sampel kecil (\(n<30\)), tetap pakai \(t\).⟧
 <h2>Cara membaca selang \(\mu_1-\mu_2\)</h2>
@@ -142,7 +152,13 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 <h2>Gagasan</h2>
 <p>[[ms_hip|Pengujian hipotesis]] menilai pernyataan tentang parameter. \(H_0\) (hipotesis nol) adalah pernyataan yang diuji, \(H_1\) alternatifnya (satu arah atau dua arah).</p>
 <h2>Lima tahap</h2>
-<ol><li>Rumuskan \(H_0\) dan \(H_1\).</li><li>Tetapkan taraf nyata \(\alpha\).</li><li>Pilih statistik uji dan sebarannya.</li><li>Tentukan daerah kritis (atau hitung \(p\)-value).</li><li>Hitung statistik uji dan simpulkan.</li></ol>
+<div class="proc"><div class="pr"><b>1</b>Rumuskan \(H_0\) dan \(H_1\)</div><div class="pr"><b>2</b>Tetapkan taraf nyata \(\alpha\)</div><div class="pr"><b>3</b>Pilih statistik uji dan sebarannya</div><div class="pr"><b>4</b>Tentukan daerah kritis atau hitung \(p\)-value</div><div class="pr"><b>5</b>Hitung statistik uji dan simpulkan</div></div>
+<h3>Aturan keputusan</h3>
+<div class="treewrap"><div class="tree"><div class="tr-node root">Bandingkan \(p\)-value dengan \(\alpha\)</div><div class="tr-kids">
+<div class="tr-kid lab"><span class="tr-lab red">\(p<\alpha\)</span><div class="tr-node no">Tolak \(H_0\)<br><small>ada bukti cukup untuk \(H_1\)</small></div></div>
+<div class="tr-kid lab"><span class="tr-lab red">\(p\ge\alpha\)</span><div class="tr-node ok">Gagal menolak \(H_0\)<br><small>bukti belum cukup</small></div></div>
+</div></div></div>
+
 <h2>Galat</h2>
 <p>[[tipe12|Galat tipe I]] (menolak \(H_0\) yang benar, peluangnya \(\alpha\)) dan galat tipe II (peluangnya \(\beta\)); kuasa uji \(=1-\beta\).</p>
 <h2>Uji-z untuk rata-rata (\(\sigma\) diketahui)</h2>
@@ -160,6 +176,12 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 <h2>Tabel ANOVA</h2>
 \[SST=SSB+SSW,\quad MSB=\frac{SSB}{k-1},\quad MSW=\frac{SSW}{N-k},\quad F=\frac{MSB}{MSW}\]
 <p>Tolak \(H_0\) bila \(F>F_{\alpha;\,k-1,\,N-k}\).</p>
+<h3>Bentuk tabel ANOVA</h3>
+<table><tr><th>Sumber variasi</th><th>Jumlah kuadrat</th><th>db</th><th>Kuadrat tengah</th><th>\(F\)</th></tr><tr><td>Antar kelompok</td><td>\(SSB\)</td><td>\(k-1\)</td><td>\(MSB=\frac{SSB}{k-1}\)</td><td>\(\frac{MSB}{MSW}\)</td></tr><tr><td>Dalam kelompok</td><td>\(SSW\)</td><td>\(N-k\)</td><td>\(MSW=\frac{SSW}{N-k}\)</td><td></td></tr><tr><td>Total</td><td>\(SST\)</td><td>\(N-1\)</td><td></td><td></td></tr></table>
+
 <h2>Contoh</h2>
-<p>Tiga kelompok: (5, 6, 7), (7, 8, 9), (9, 10, 11). Rata-rata kelompok 6, 8, 10 dan rata-rata total 8. \(SSB=3(4+0+4)=24\), \(SSW=2+2+2=6\), \(MSB=12\), \(MSW=6/6=1\), jadi \(F=12\). Nilai kritis \(F_{0{,}05;\,2,6}=5{,}14\), sehingga \(H_0\) ditolak.</p>`},
+<p>Tiga kelompok: (5, 6, 7), (7, 8, 9), (9, 10, 11). Rata-rata kelompok 6, 8, 10 dan rata-rata total 8. \(SSB=3(4+0+4)=24\), \(SSW=2+2+2=6\), \(MSB=12\), \(MSW=6/6=1\), jadi \(F=12\). Nilai kritis \(F_{0{,}05;\,2,6}=5{,}14\), sehingga \(H_0\) ditolak.</p>
+<table><tr><th>Sumber variasi</th><th>JK</th><th>db</th><th>KT</th><th>\(F\)</th></tr><tr><td>Antar kelompok</td><td>24</td><td>2</td><td>12</td><td>12</td></tr><tr><td>Dalam kelompok</td><td>6</td><td>6</td><td>1</td><td></td></tr><tr><td>Total</td><td>30</td><td>8</td><td></td><td></td></tr></table>
+⟦kes|\(F=12>F_{0{,}05;\,2,6}=5{,}14\), jadi \(H_0\) ditolak: ada paling sedikit satu rata-rata kelompok yang berbeda.⟧
+`},
 ]};

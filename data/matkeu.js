@@ -5,6 +5,10 @@ COURSES.matkeu = {t:"Matematika Keuangan", desc:"Bunga dan anuitas, amortisasi p
 <p>Satu rupiah hari ini lebih berharga daripada satu rupiah tahun depan karena uang bisa berbunga. Ada [[sederhana|bunga sederhana]] dan [[majemuk|bunga majemuk]]; ukuran per periodenya adalah [[bunga|suku bunga efektif]]. Pembayaran masa depan diubah menjadi [[pv|nilai sekarang]] memakai [[v|faktor diskonto]].</p>
 <h2>Anuitas</h2>
 <p>[[anuitas|Anuitas]] adalah rangkaian pembayaran berkala. Pembayaran di akhir periode disebut [[pasti|anuitas pasti]], di awal periode disebut [[awal|anuitas awal]], dan yang tak berujung disebut [[perpet|perpetuitas]].</p>
+<h3>Garis waktu pembayaran</h3>
+⟦waktu|0,1,2,⋯,n−1,n||1:1;2:1;4:1;5:1|2:Anuitas akhir \(a_{\overline n|}\): dibayar di akhir periode (waktu \(1,2,\dots,n\))⟧
+⟦waktu|0,1,2,⋯,n−1,n||0:1;1:1;2:1;4:1|2:Anuitas awal \(\ddot a_{\overline n|}\): dibayar di awal periode (waktu \(0,1,\dots,n-1\))⟧
+
 <h2>Contoh soal dan pembahasan</h2>
 <div class="soal"><p><b>Soal.</b> Cicilan Rp1.000.000 dibayar tiap akhir tahun selama 10 tahun, \(i=5\%\) efektif.</p>
 <p><b>Diketahui:</b> \(R=1.000.000\), \(n=10\), \(i=5\%\).</p>
