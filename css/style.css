@@ -155,3 +155,8 @@ main tr:nth-child(even) td{background:var(--chip)}
 .wt{margin-top:64px}
 .wt-n{top:auto;bottom:calc(100% - 50px);max-width:42%}
 .pbox.teorema{border-left-color:var(--red);background:var(--chip)}.pbox.teorema .tag{background:var(--red)}
+
+/* ===== Kartu matkul yang belum ada catatannya ===== */
+.ccard.kosong{opacity:.55;cursor:default}
+.ccard.kosong:hover{transform:none;box-shadow:none}
+.ccard.kosong .meta{color:var(--muted)}
