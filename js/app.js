@@ -1,4 +1,4 @@
-const APP_VERSION='2.2 (4 Nov 2026)';
+const APP_VERSION='2.3 (8 Nov 2026)';
 /* ===== Mesin halaman: kartu hover, navigasi bab, latihan. Jarang perlu diubah. ===== */
 /* Data dibaca dari: data/glosarium.js (T), data/<matkul>.js (COURSES), data/latihan.js (P) */
 
@@ -89,21 +89,41 @@ function remember(id){ try{ localStorage.setItem('lastChapter',id); }catch(e){} 
 function recall(){ try{ return localStorage.getItem('lastChapter'); }catch(e){ return null; } }
 function setHash(h){ try{ if(location.hash!=='#'+h) history.replaceState(null,'','#'+h); }catch(e){} }
 
-/* Lobby: halaman awal */
+/* Struktur semester -> matkul (dari data/struktur.js) */
+const TREE = window.TREE || [];
+const semOf = k => TREE.find(s=>s.kids.some(m=>m.k===k));
+const nMatkul = n => n ? n+' mata kuliah' : 'Belum ada mata kuliah';
+
+/* Lobby: halaman awal, berisi kartu Semester 1 sampai 5 */
 function showLobby(){
  setMode('lobby'); const el=document.getElementById('content');
  const last=recall(), lc=last&&flat[last];
  el.innerHTML='<div class="hero"><p class="by">By ShiroAkari</p><h1>Catatan Aktuaria</h1><p class="sub">Catatan belajar dengan definisi, rumus, dan contoh yang muncul saat kursor diarahkan ke istilah.</p>'
   +(lc?'<a class="resume" href="#'+lc.id+'">Lanjutkan belajar<span>'+lc.t+' · '+C[lc.k].t+'</span></a>':'')+'</div>'
-  +'<div class="grid">'+Object.entries(C).map(([k,c])=>'<a class="ccard" href="#'+k+'"><h2>'+c.t+'</h2><p>'+(c.desc||'')+'</p><span class="meta">'+c.ch.length+' bab</span></a>').join('')+'</div>'
-  +'<p class="foot">'+Object.keys(C).length+' mata kuliah · '+Object.keys(T).length+' istilah di glosarium · versi '+APP_VERSION+'</p>';
+  +'<div class="grid">'+TREE.map(s=>{
+    const isi=s.kids.filter(m=>m.k).length;
+    return '<a class="ccard" href="#'+s.id+'"><h2>'+s.n+'</h2><p>'+(s.kids.length?s.kids.map(m=>m.n).join(', ')+'.':'Belum ada mata kuliah di semester ini.')+'</p><span class="meta">'+nMatkul(s.kids.length)+(isi?' · '+isi+' sudah ada catatan':'')+'</span></a>';
+  }).join('')+'</div>'
+  +'<p class="foot">'+TREE.length+' semester · '+Object.keys(C).length+' mata kuliah bercatatan · '+Object.keys(T).length+' istilah di glosarium · versi '+APP_VERSION+'</p>';
  document.title='Catatan Aktuaria'; setHash('home'); scrollTo(0,0);
+}
+
+/* Halaman satu semester: kartu mata kuliah */
+function showSemester(id){
+ setMode('semester'); const s=TREE.find(x=>x.id===id), el=document.getElementById('content');
+ el.innerHTML='<p class="crs">Semester</p><h1>'+s.n+'</h1><p class="sub">'+nMatkul(s.kids.length)+'</p>'
+  +(s.kids.length?'<div class="grid">'+s.kids.map(m=>{
+    const kode=m.kode?' · '+m.kode:'';
+    if(m.k&&C[m.k]) return '<a class="ccard" href="#'+m.k+'"><h2>'+m.n+'</h2><p>'+(C[m.k].desc||'')+'</p><span class="meta">'+C[m.k].ch.length+' bab'+kode+'</span></a>';
+    return '<div class="ccard kosong"><h2>'+m.n+'</h2><p>Belum ada catatan.</p><span class="meta">Segera hadir'+kode+'</span></div>';
+  }).join('')+'</div>':'<p class="sub" style="margin-top:28px">Belum ada mata kuliah di semester ini.</p>');
+ document.title=s.n+' · Catatan Aktuaria'; setHash(id); scrollTo(0,0);
 }
 
 /* Halaman satu mata kuliah: daftar bab */
 function showCourse(k){
- setMode('course'); const c=C[k], el=document.getElementById('content');
- el.innerHTML='<p class="crs">Mata kuliah</p><h1>'+c.t+'</h1>'+(c.desc?'<p class="sub">'+c.desc+'</p>':'')
+ setMode('course'); const c=C[k], el=document.getElementById('content'), s=semOf(k);
+ el.innerHTML=(s?'<a class="crs" href="#'+s.id+'">'+s.n+'</a>':'<p class="crs">Mata kuliah</p>')+'<h1>'+c.t+'</h1>'+(c.desc?'<p class="sub">'+c.desc+'</p>':'')
   +'<ol class="chlist">'+c.ch.map((x,i)=>'<li><a href="#'+x.id+'"><span class="no">'+(x.t.startsWith('Lampiran')?'•':i+1)+'</span><span class="tt">'+x.t+'</span>'+((typeof P!=='undefined'&&P[x.id])?'<span class="bd">Latihan</span>':'')+'</a></li>').join('')+'</ol>';
  document.title=c.t+' · Catatan Aktuaria'; setHash(k); scrollTo(0,0);
 }
@@ -129,6 +149,7 @@ function showChapter(id){
 
 function show(id){
  closeFrom(0);
+ if(TREE.some(s=>s.id===id)) return showSemester(id);
  if(!id||id==='home'||(!C[id]&&!flat[id])) return showLobby();
  if(C[id]) return showCourse(id);
  return showChapter(id);
