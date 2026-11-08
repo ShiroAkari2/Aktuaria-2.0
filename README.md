@@ -1,14 +1,28 @@
 # Catatan Aktuaria
 
-Catatan belajar dengan istilah yang muncul saat kursor diarahkan (definisi, rumus, contoh).
+Catatan belajar dengan istilah yang muncul saat kursor diarahkan (definisi, rumus, contoh). Tampilannya meniru folder di File Explorer: Kuliah > Matkul S1/S2/S3 > folder matkul > bab.
 
 ## Struktur
-- `index.html`: kerangka halaman (jarang diubah)
-- `css/style.css`: tampilan
-- `js/app.js`: mesin hover, pindah bab, latihan soal (jarang diubah)
+- `index.html`: kerangka halaman (address bar, panel folder, area isi, status bar)
+- `css/style.css`: tampilan (bagian "File Explorer" ada di paling bawah)
+- `js/app.js`: mesin hover istilah dan komponen teks bab
+- `js/explorer.js`: folder, address bar, pindah bab, latihan soal
+- `data/struktur.js`: daftar folder S1, S2, S3 (nama folder persis seperti di laptop)
 - `data/glosarium.js`: semua istilah (`T`), dipakai bersama oleh semua matkul
-- `data/matkeu.js`, `data/statmat.js`, `data/pma.js`: isi bab per matkul
+- `data/matkeu.js`, `data/statmat.js`, `data/pma.js`, `data/metstat.js`: isi bab per matkul
 - `data/latihan.js`: latihan soal per bab
+
+## Alamat
+`#home` = Kuliah. `#s1`, `#s2`, `#s3` = folder semester. `#matkeu` = folder matkul berisi bab. `#matkeu-1` = satu bab.
+Folder yang belum ada isinya tampil kosong (`#s1-fisika`, dan seterusnya).
+
+## Menambah folder
+Tambah satu baris `{n:"Nama Folder"}` di daftar `kids` pada `data/struktur.js`. Isi `kode:"..."` kalau mau kode matkul ikut tampil.
+
+## Mengisi folder dengan matkul
+1. Salin `data/_template-matkul-baru.js` menjadi `data/namabaru.js` lalu isi.
+2. Tambahkan `<script src="data/namabaru.js"></script>` di `index.html` (sebelum `data/struktur.js`).
+3. Di `data/struktur.js`, tambahkan `k:"namabaru"` pada folder yang cocok. Folder itu otomatis berisi bab-babnya.
 
 ## Menambah isi
 - **Istilah baru**: tambah satu baris di `data/glosarium.js`.
@@ -17,14 +31,4 @@ Catatan belajar dengan istilah yang muncul saat kursor diarahkan (definisi, rumu
 - **Latihan soal**: tambah entri di `data/latihan.js` dengan kunci id bab.
 - **Rumus**: tulis TeX dalam `\( ... \)` (satu baris) atau `\[ ... \]` (tampil di tengah).
 
-## Lobby dan navigasi
-- Alamat kosong atau `#home` = lobby. `#kodematkul` = daftar bab satu matkul. `#kodematkul-1` = satu bab.
-- Tombol "Lanjutkan belajar" di lobby mengingat bab terakhir yang dibuka (disimpan di browser).
-- Teks deskripsi tiap matkul di lobby diambil dari `desc` di file `data/<matkul>.js`.
-
-## Menambah mata kuliah baru
-1. Salin `data/_template-matkul-baru.js` menjadi `data/namabaru.js` lalu isi.
-2. Tambahkan `<script src="data/namabaru.js"></script>` di `index.html` (sebelum `js/app.js`).
-
-## Menambah bab baru
-Tambahkan satu blok `{id:"matkul-N", t:"Judul", h:String.raw\`...\`}` di daftar `ch` pada file matkulnya.
+"Lanjutkan belajar" di halaman Kuliah mengingat bab terakhir yang dibuka (disimpan di browser).
