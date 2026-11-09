@@ -2,7 +2,7 @@
    - File milik sendiri: ambil dari internet dulu (supaya update langsung terlihat); kalau offline, pakai simpanan.
    - File dari luar (MathJax, font): pakai simpanan dulu, ambil dari internet kalau belum ada.
    Menambah bab/matkul/istilah TIDAK perlu mengubah file ini. Naikkan angka VER hanya kalau ingin mengosongkan simpanan lama. */
-const VER = 'aktuaria-v8';
+const VER = 'aktuaria-v9';
 const CORE = ['./','index.html','css/style.css','js/app.js','data/glosarium.js','data/tsb.js','data/matkeu.js','data/matematika.js','data/statmat.js','data/pma.js','data/metstat.js','data/latihan.js','data/struktur.js','data/jadwal.js','manifest.json','icons/icon-192.png','icons/icon-512.png'];
 const CDN = [
   'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js',
