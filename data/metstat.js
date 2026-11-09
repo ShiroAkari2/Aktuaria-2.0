@@ -1,7 +1,7 @@
 /* Metode Statistika. Bab 1-2, 5-7 diambil dari slide dosen (materi_metstat_1-5, Pekan 9-12).
    Bab 3, 4, 8, 9, 10 belum ada file dosennya: ringkasan umum, cocokkan dengan catatan kuliahmu. */
 window.COURSES = window.COURSES || {};
-COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah acak, sebaran contoh, selang kepercayaan, uji hipotesis, uji-t, dan ANOVA.", ch:[
+COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah acak, pendugaan, selang kepercayaan, uji hipotesis, uji-t, dan ANOVA.", ch:[
  {id:"metstat-1", t:"Pengantar statistika dan konsep dasar (Pekan 1)", h:String.raw`<h2>Statistik dan statistika</h2>
 <p><i>Statistika</i> adalah ilmu tentang merencanakan, mengumpulkan, menganalisis, menafsirkan, dan menyajikan data. <i>Statistik</i> (tanpa "a") adalah ukuran yang dihitung dari sampel, misalnya rata-rata gaji 20 pegawai.</p>
 <h2>Populasi dan sampel</h2>
@@ -50,7 +50,7 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 <h2>Penduga titik dan penduga selang</h2>
 <p>Penduga titik memberi satu nilai, tetapi tidak menunjukkan seberapa dekat nilai itu dengan parameter sebenarnya. Karena itu dipakai penduga selang ([[sel|selang kepercayaan]]).</p>
 <p>Contoh titik: tinggi 10 mahasiswa berjumlah 1.566 cm, jadi dugaan rata-rata \(\bar x=156{,}6\) cm. Nilai 70, 80, 75, 85, 90 memberi \(\bar x=80\). Dari 200 mahasiswa, 80 memakai paket internet lebih dari 20 GB: \(\hat p=80/200=0{,}4\).</p>`},
- {id:"metstat-6", t:"Selang kepercayaan: rata-rata populasi (Pekan 6–7)", h:String.raw`<h2>Bentuk umum</h2>
+ {id:"metstat-6", t:"Selang kepercayaan: rata-rata populasi (Pekan 11)", h:String.raw`<h2>Bentuk umum</h2>
 <p><span class="boxf">Penduga titik ± Margin of Error</span></p>
 <p>Selang kepercayaan \((1-\alpha)100\%\) dibangun dari penduga titik dan [[ms_se|margin of error]]. Margin of error \(=\) nilai kritis \(\times\) galat baku. Nilai kritis \(z\) yang paling sering dipakai:</p>
 <table><tr><th>Tingkat kepercayaan</th><th>90%</th><th>95%</th><th>99%</th></tr><tr><th>\(z_{\alpha/2}\)</th><td>1,645</td><td>1,96</td><td>2,576</td></tr></table>
@@ -71,7 +71,7 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 ⟦langkah|3|Menentukan margin of error|\[MoE=z_{0{,}025}\cdot SE=1{,}96\times0{,}4167=0{,}817\]⟧
 ⟦langkah|4|Menentukan selang kepercayaan|\[BB=10-0{,}817=9{,}183,\qquad BA=10+0{,}817=10{,}817\]\[9{,}183<\mu<10{,}817\]⟧
 ⟦kes|Dengan tingkat kepercayaan 95%, rata-rata populasi berada di antara 9,183 dan 10,817. (Slide membulatkan SE menjadi 0,416, sehingga hasilnya 9,184 sampai 10,815.)⟧`},
- {id:"metstat-7", t:"Selang kepercayaan: beda dua rata-rata (Pekan 6–7)", h:String.raw`<h2>Dua sampel saling bebas</h2>
+ {id:"metstat-7", t:"Selang kepercayaan: beda dua rata-rata (Pekan 11)", h:String.raw`<h2>Dua sampel saling bebas</h2>
 <p>Dua populasi \(\mu_1\) dan \(\mu_2\), masing-masing diambil sampel sendiri. Penduga titik bagi \(\mu_1-\mu_2\) adalah \(\bar x_1-\bar x_2\). Contoh pertanyaan: apakah ada perbedaan rata-rata waktu bermedia sosial antara laki-laki dan perempuan?</p>
 <p><span class="boxf">\(\bar x_1-\bar x_2\) ± Margin of Error</span></p>
 <h2>Memilih rumus</h2>
@@ -108,7 +108,7 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 ⟦garis|-21.735|-7.265|μ₁−μ₂⟧
 ⟦kes|Selang seluruhnya negatif, jadi \(\mu_1<\mu_2\): rata-rata nilai metode asynchronous lebih tinggi daripada synchronous.⟧
 ⟦catatan|Di slide dosen, langkah 4 ditulis \(BB=7{,}265\) dan \(BA=21{,}735\) (positif), dengan kesimpulan "synchronous lebih efektif". Dari hitungan di atas, \(-14{,}5\mp7{,}235\) menghasilkan selang negatif, sehingga arah kesimpulannya terbalik. Konfirmasi ke dosen.⟧`},
- {id:"metstat-8", t:"Selang kepercayaan: data berpasangan (Pekan 6–7)", h:String.raw`<h2>Data berpasangan</h2>
+ {id:"metstat-8", t:"Selang kepercayaan: data berpasangan (Pekan 11)", h:String.raw`<h2>Data berpasangan</h2>
 <p>[[ms_pasang|Data berpasangan]] diperoleh dari dua perlakuan berbeda pada objek atau sampel yang sama. Hitung selisih tiap pasangan, lalu perlakukan sebagai satu sampel.</p>
 <table><tr><th>Pasangan</th><th>Sampel 1 \((x_1)\)</th><th>Sampel 2 \((x_2)\)</th><th>\(d=x_1-x_2\)</th></tr><tr><td>1</td><td>\(x_{11}\)</td><td>\(x_{12}\)</td><td>\(x_{11}-x_{12}\)</td></tr><tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr><tr><td>\(n\)</td><td>\(x_{n1}\)</td><td>\(x_{n2}\)</td><td>\(x_{n1}-x_{n2}\)</td></tr></table>
 \[d_i=x_{i1}-x_{i2},\qquad \bar d=\frac{\sum d_i}{n},\qquad s_d=\sqrt{\frac{\sum(d_i-\bar d)^2}{n-1}}\]
@@ -124,7 +124,7 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 ⟦garis|-0.528|8.242|μ_d⟧
 ⟦kes|Selang memuat 0, jadi tidak dapat disimpulkan marketplace mana yang lebih laris.⟧
 ⟦catatan|Di slide tertulis \(s_d=4{,}471\), tetapi hitungan yang benar adalah 4,741 (SE 1,792 di slide sudah konsisten dengan 4,741), jadi hasil akhirnya sama.⟧`},
- {id:"metstat-9", t:"Selang kepercayaan: proporsi dan beda dua proporsi (Pekan 6–7)", h:String.raw`<h2>Proporsi populasi</h2>
+ {id:"metstat-9", t:"Selang kepercayaan: proporsi dan beda dua proporsi (Pekan 12)", h:String.raw`<h2>Proporsi populasi</h2>
 <p>Proporsi sampel \(\hat p\) adalah penduga tak bias bagi proporsi populasi \(p\):</p>
 \[\hat p=\frac xn,\qquad x=\text{banyak kejadian sukses},\ n=\text{ukuran sampel}\]
 <p><span class="boxf">\(p\approx\hat p\pm z_{\alpha/2}\sqrt{\dfrac{\hat p(1-\hat p)}{n}}\)</span></p>
@@ -184,4 +184,31 @@ COURSES.metstat = {t:"Metode Statistika", desc:"Statistika deskriptif, peubah ac
 <table><tr><th>Sumber variasi</th><th>JK</th><th>db</th><th>KT</th><th>\(F\)</th></tr><tr><td>Antar kelompok</td><td>24</td><td>2</td><td>12</td><td>12</td></tr><tr><td>Dalam kelompok</td><td>6</td><td>6</td><td>1</td><td></td></tr><tr><td>Total</td><td>30</td><td>8</td><td></td><td></td></tr></table>
 ⟦kes|\(F=12>F_{0{,}05;\,2,6}=5{,}14\), jadi \(H_0\) ditolak: ada paling sedikit satu rata-rata kelompok yang berbeda.⟧
 `},
+,
+ {id:"metstat-13",t:"Panduan tabel Z: distribusi normal standar (Pekan 11–12)",h:String.raw`
+<h2>Standarisasi ke skor Z</h2><p>Untuk pengamatan \(X\), ubah menjadi skor baku \(Z=(X-\mu)/\sigma\). Tabel yang disertakan memiliki dua format: luas dari \(-\infty\) sampai \(z\), dan luas dari 0 sampai \(z\). Selalu periksa judul tabel.</p>
+<h2>Alur membaca tabel</h2><div class="proc"><div class="pr"><b>1</b>Hitung skor baku \(z\)</div><div class="pr"><b>2</b>Tentukan area yang diminta: kiri, kanan, atau di antara dua nilai</div><div class="pr"><b>3</b>Cari baris untuk satu angka desimal pertama dan kolom desimal kedua</div><div class="pr"><b>4</b>Gunakan simetri kurva bila nilai z negatif</div><div class="pr"><b>5</b>Konversikan luas sesuai pertanyaan</div></div>
+<h2>Contoh dari tabel yang diunggah</h2><ul><li>\(P(Z&lt;-0{,}54)=0{,}2946\) pada tabel luas kumulatif kiri.</li><li>\(P(0&lt;Z&lt;0{,}54)=0{,}2054\) pada tabel luas dari 0 ke z.</li></ul>
+<h2>Rumus konversi</h2><table><tr><th>Area</th><th>Rumus</th></tr><tr><td>Kiri</td><td>\(P(Z&lt;z)=\Phi(z)\)</td></tr><tr><td>Kanan</td><td>\(P(Z&gt;z)=1-\Phi(z)\)</td></tr><tr><td>Di antara a dan b</td><td>\(\Phi(b)-\Phi(a)\)</td></tr><tr><td>Simetri</td><td>\(\Phi(-z)=1-\Phi(z)\)</td></tr></table>
+<h2>Flowchart area peluang</h2><div class="treewrap"><div class="tree"><div class="tr-node root">Area peluang yang dicari?</div><div class="tr-kids"><div class="tr-kid"><div class="tr-node cond">Kiri dari z</div><div class="tr-kids"><div class="tr-kid"><div class="tr-node">\(\Phi(z)\)</div></div></div></div><div class="tr-kid"><div class="tr-node cond">Kanan dari z</div><div class="tr-kids"><div class="tr-kid"><div class="tr-node">\(1-\Phi(z)\)</div></div></div></div><div class="tr-kid"><div class="tr-node cond">Antara a dan b</div><div class="tr-kids"><div class="tr-kid"><div class="tr-node">\(\Phi(b)-\Phi(a)\)</div></div></div></div></div></div></div>
+<h2>Catatan referensi tabel Z</h2><p>Gunakan tabel Z yang diberikan pada perkuliahan. Tabel sumber memiliki format luas kumulatif dari sisi kiri dan luas antara 0 sampai z; pastikan membaca judul tabel sebelum mengambil nilai.</p><p class="hint">Halaman 1 memuat luas dari \(-\infty\) sampai z; halaman 2 memuat luas dari 0 sampai z.</p>`},
+ {id:"metstat-14",t:"Panduan tabel t: distribusi t-Student (Pekan 11–12)",h:String.raw`
+<h2>Kapan menggunakan distribusi t?</h2><p>Dalam slide selang kepercayaan, distribusi t digunakan ketika simpangan baku populasi tidak diketahui, terutama untuk sampel kecil. Nilai kritis bergantung pada derajat bebas dan luas peluang pada ekor.</p>\[t_{\alpha/2;\,db},\qquad db=n-1\]
+<p>Untuk dua sampel bebas dengan ragam sama, slide menggunakan \(db=n_1+n_2-2\). Untuk ragam tidak sama, slide Pekan 11 menuliskan \(db=n-1\); ikuti ketentuan yang diberikan dosen.</p>
+<h2>Cara membaca tabel t</h2><div class="proc"><div class="pr"><b>1</b>Tentukan derajat bebas (db)</div><div class="pr"><b>2</b>Tentukan tingkat kepercayaan</div><div class="pr"><b>3</b>Untuk selang dua sisi, gunakan \(\alpha/2\) pada tiap ujung</div><div class="pr"><b>4</b>Cari baris db dan kolom probabilitas</div><div class="pr"><b>5</b>Gunakan nilai kritis pada margin of error</div></div>
+<h2>Contoh pembacaan</h2><ul><li>SK 95%, \(db=6\): kolom dua ujung 0,050 (atau satu ujung 0,025) memberi \(t=2{,}44691\).</li><li>SK 90%, \(db=28\): kolom dua ujung 0,100 (atau satu ujung 0,050) memberi \(t\approx1{,}701\).</li></ul>
+<h2>Catatan judul kolom</h2><p>Tabel menampilkan probabilitas satu ujung dan dua ujung. Probabilitas lebih kecil adalah luas satu ujung; probabilitas lebih besar adalah luas kedua ujung.</p>
+<h2>Rumus dalam selang rata-rata</h2>\[\bar x\pm t_{\alpha/2;\,db}\frac{s}{\sqrt n}\]<p>Misalnya \(n=7\), maka \(db=6\). Untuk SK 95%, gunakan \(t_{0{,}025;6}=2{,}44691\).</p>
+<h2>Catatan referensi tabel t</h2><p>Pilih baris derajat bebas dan kolom probabilitas yang sesuai. Pada tabel sumber, probabilitas satu ujung dan dua ujung ditampilkan terpisah.</p>`},
+ {id:"metstat-15",t:"Peta belajar dan pemilihan rumus selang kepercayaan (Pekan 11–12)",h:String.raw`
+<h2>Timeline pembelajaran</h2><p>Mulai dari pendugaan satu parameter, lanjut ke perbandingan dua kelompok, lalu pelajari cara memilih nilai kritis dari tabel Z atau t.</p>⟦waktu|Rata-rata satu populasi, beda dua rata-rata, data berpasangan, proporsi satu populasi, beda dua proporsi, tabel Z dan t|0-6||0:Parameter dan sampel;2:Dua kelompok;3:Pasangan;5:Proporsi;6:Tabel nilai kritis⟧
+<h2>Flowchart memilih prosedur</h2><div class="treewrap"><div class="tree"><div class="tr-node root">Parameter apa yang diduga?</div><div class="tr-kids">
+<div class="tr-kid"><div class="tr-node cond">Satu rata-rata \(\mu\)</div><div class="tr-kids"><div class="tr-kid"><div class="tr-node">\(\sigma\) diketahui → Z<br>\(\sigma\) tidak diketahui → t untuk sampel kecil; slide menyebut pendekatan Z untuk \(n\ge30\)</div></div></div></div>
+<div class="tr-kid"><div class="tr-node cond">Beda rata-rata</div><div class="tr-kids"><div class="tr-kid"><div class="tr-node">Berpasangan → hitung selisih \(d_i\), gunakan t<br>Bebas → periksa ragam diketahui/sama/tidak sama</div></div></div></div>
+<div class="tr-kid"><div class="tr-node cond">Satu proporsi atau beda dua proporsi</div><div class="tr-kids"><div class="tr-kid"><div class="tr-node">Gunakan penduga proporsi dan nilai kritis Z</div></div></div></div>
+</div></div></div>
+<h2>Checklist perhitungan</h2><ul><li>Identifikasi parameter: \(\mu\), \(\mu_1-\mu_2\), \(p\), atau \(p_1-p_2\).</li><li>Pastikan sampel bebas atau berpasangan.</li><li>Catat apakah simpangan baku populasi diketahui dan asumsi ragam.</li><li>Tentukan tingkat kepercayaan dan \(\alpha\).</li><li>Pilih tabel Z atau t serta derajat bebas jika menggunakan t.</li><li>Hitung penduga titik, standard error, margin of error, batas bawah, dan batas atas.</li><li>Untuk beda parameter, periksa apakah selang memuat nol.</li></ul>
+<h2>Rumus inti</h2>\[\text{Selang}=\text{Penduga titik}\pm\text{Margin of Error}\]\[\text{MoE}=\text{Nilai kritis}\times\text{Standard Error}\]
+<h2>Sumber pembahasan</h2><p>Bab ini disusun berdasarkan topik dan contoh yang terdapat pada materi kuliah Pekan 11 dan Pekan 12 yang diunggah.</p><p class="hint">Isi bab ini merangkum alur dari slide Selang Kepercayaan Pekan 11 dan Selang Kepercayaan 2 Pekan 12. Tabel Z dan t tersedia sebagai lampiran PDF.</p>`}
+
 ]};
