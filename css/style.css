@@ -160,3 +160,22 @@ main tr:nth-child(even) td{background:var(--chip)}
 .ccard.kosong{opacity:.55;cursor:default}
 .ccard.kosong:hover{transform:none;box-shadow:none}
 .ccard.kosong .meta{color:var(--muted)}
+
+/* ===== Jadwal kuliah di bawah beranda ===== */
+.jadwal{margin:34px 0 18px;padding:18px 20px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px}
+.jadwal h2{margin:0 0 6px;font-size:21px;border:0;padding:0}
+.jd{padding:12px 0 4px;border-top:1px solid var(--line);margin-top:10px}
+.jd:first-of-type{border-top:0;margin-top:0}
+.jd-h{font:700 14px Inter,system-ui,sans-serif;color:var(--accent);letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+.jd ul{list-style:none;margin:0;padding:0}
+.jd li{display:grid;grid-template-columns:112px 1fr auto;gap:12px;align-items:baseline;padding:6px 0;font:15px/1.45 Inter,system-ui,sans-serif}
+.jd-w{font-weight:600;color:var(--ink);white-space:nowrap}
+.jd-n{color:var(--ink)}
+.jd-r{color:var(--muted);font-size:13px;text-align:right}
+@media(max-width:520px){.jd li{grid-template-columns:1fr;gap:0}.jd-r{text-align:left}}
+
+/* Visual pembelajaran untuk materi Matematika */
+.flow{display:flex;flex-direction:column;align-items:center;gap:7px;margin:18px auto 22px;max-width:620px}
+.flow-node{width:min(100%,520px);padding:12px 16px;text-align:center;background:#f5f9ff;border:1px solid #c9dafa;border-left:3px solid #2563eb;border-radius:5px;color:var(--ink);line-height:1.55}
+.flow-arrow{color:#2563eb;font-size:1.15rem;line-height:1}
+.src{margin-top:24px;padding-top:10px;border-top:1px solid #dbe5f3;color:#64748b;font-size:.84rem}
