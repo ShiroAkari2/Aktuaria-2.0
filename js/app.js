@@ -1,4 +1,4 @@
-const APP_VERSION='2.3 (8 Nov 2026)';
+const APP_VERSION='2.5 (9 Nov 2026)';
 /* ===== Mesin halaman: kartu hover, navigasi bab, latihan. Jarang perlu diubah. ===== */
 /* Data dibaca dari: data/glosarium.js (T), data/<matkul>.js (COURSES), data/latihan.js (P) */
 
@@ -89,12 +89,21 @@ function remember(id){ try{ localStorage.setItem('lastChapter',id); }catch(e){} 
 function recall(){ try{ return localStorage.getItem('lastChapter'); }catch(e){ return null; } }
 function setHash(h){ try{ if(location.hash!=='#'+h) history.replaceState(null,'','#'+h); }catch(e){} }
 
-/* Struktur semester -> matkul (dari data/struktur.js) */
+/* Struktur semester dan kelas mandiri (dari data/struktur.js). */
 const TREE = window.TREE || [];
+const STANDALONE = window.STANDALONE || [];
 const semOf = k => TREE.find(s=>s.kids.some(m=>m.k===k));
+const standaloneOf = k => STANDALONE.find(m=>m.k===k);
 const nMatkul = n => n ? n+' mata kuliah' : 'Belum ada mata kuliah';
 
-/* Lobby: halaman awal, berisi kartu Semester 1 sampai 5 */
+/* Kartu jadwal kuliah (data/jadwal.js), tampil di bawah beranda */
+function jadwalHTML(){
+ const J=window.JADWAL; if(!J||!J.hari||!J.hari.length) return '';
+ return '<section class="jadwal"><h2>'+J.judul+'</h2>'+J.hari.map(d=>'<div class="jd"><div class="jd-h">'+d.h+'</div><ul>'
+  +d.kelas.map(k=>'<li><span class="jd-w">'+k.w+'</span><span class="jd-n">'+k.n+'</span><span class="jd-r">'+k.r+'</span></li>').join('')+'</ul></div>').join('')+'</section>';
+}
+
+/* Lobby: halaman awal, berisi kartu Semester 1 sampai 5 dan kelas mandiri. */
 function showLobby(){
  setMode('lobby'); const el=document.getElementById('content');
  const last=recall(), lc=last&&flat[last];
@@ -103,8 +112,14 @@ function showLobby(){
   +'<div class="grid">'+TREE.map(s=>{
     const isi=s.kids.filter(m=>m.k).length;
     return '<a class="ccard" href="#'+s.id+'"><h2>'+s.n+'</h2><p>'+(s.kids.length?s.kids.map(m=>m.n).join(', ')+'.':'Belum ada mata kuliah di semester ini.')+'</p><span class="meta">'+nMatkul(s.kids.length)+(isi?' · '+isi+' sudah ada catatan':'')+'</span></a>';
+  }).join('')
+  +STANDALONE.map(m=>{
+    const c=C[m.k];
+    if(!c) return '<div class="ccard kosong"><h2>'+m.n+'</h2><p>Belum ada catatan.</p><span class="meta">Segera hadir</span></div>';
+    return '<a class="ccard" href="#'+m.k+'"><h2>'+m.n+'</h2><p>'+(c.desc||'')+'</p><span class="meta">'+c.ch.length+' bab</span></a>';
   }).join('')+'</div>'
-  +'<p class="foot">'+TREE.length+' semester · '+Object.keys(C).length+' mata kuliah bercatatan · '+Object.keys(T).length+' istilah di glosarium · versi '+APP_VERSION+'</p>';
+  +jadwalHTML()
+  +'<p class="foot">'+TREE.length+' semester · '+STANDALONE.length+' kelas mandiri · '+Object.keys(C).length+' mata kuliah bercatatan · '+Object.keys(T).length+' istilah di glosarium · versi '+APP_VERSION+'</p>';
  document.title='Catatan Aktuaria'; setHash('home'); scrollTo(0,0);
 }
 
@@ -123,7 +138,7 @@ function showSemester(id){
 /* Halaman satu mata kuliah: daftar bab */
 function showCourse(k){
  setMode('course'); const c=C[k], el=document.getElementById('content'), s=semOf(k);
- el.innerHTML=(s?'<a class="crs" href="#'+s.id+'">'+s.n+'</a>':'<p class="crs">Mata kuliah</p>')+'<h1>'+c.t+'</h1>'+(c.desc?'<p class="sub">'+c.desc+'</p>':'')
+ el.innerHTML=(s?'<a class="crs" href="#'+s.id+'">'+s.n+'</a>':standaloneOf(k)?'<a class="crs" href="#home">Kelas mandiri</a>':'<p class="crs">Mata kuliah</p>')+'<h1>'+c.t+'</h1>'+(c.desc?'<p class="sub">'+c.desc+'</p>':'')
   +'<ol class="chlist">'+c.ch.map((x,i)=>'<li><a href="#'+x.id+'"><span class="no">'+(x.t.startsWith('Lampiran')?'•':i+1)+'</span><span class="tt">'+x.t+'</span>'+((typeof P!=='undefined'&&P[x.id])?'<span class="bd">Latihan</span>':'')+'</a></li>').join('')+'</ol>';
  document.title=c.t+' · Catatan Aktuaria'; setHash(k); scrollTo(0,0);
 }
