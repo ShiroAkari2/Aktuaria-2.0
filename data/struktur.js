@@ -40,5 +40,7 @@ window.TREE = [
   {n:"Statistika Matematika", k:"statmat"}
  ]},
  {id:"s4", n:"Semester 4", kids:[]},
- {id:"s5", n:"Semester 5", kids:[]}
+ {id:"s5", n:"Semester 5", kids:[
+   {n:"Matematika", k:"matematika"}
+ ]}
 ];
