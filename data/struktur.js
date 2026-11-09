@@ -5,7 +5,8 @@
                k    = kunci matkul di data/<matkul>.js. Kalau diisi, kartu bisa diklik dan membuka daftar bab.
                       Kalau kosong, kartu tampil redup dengan tulisan "Belum ada catatan".
    Menambah matkul: buat data/<matkul>.js, pasang <script>-nya di index.html dan sw.js, lalu isi k di kartu matkulnya di sini.
-   Semester 4 dan 5 masih kosong: isi kids-nya kalau sudah ada matkulnya. */
+   Semester 4 dan 5 bisa tetap kosong sampai ada mata kuliah semester tersebut.
+   Kelas mandiri diletakkan di STANDALONE, sejajar dengan kartu semester di beranda. */
 window.TREE = [
  {id:"s1", n:"Semester 1", kids:[
    {n:"Bahasa Indonesia"},
@@ -40,7 +41,10 @@ window.TREE = [
   {n:"Statistika Matematika", k:"statmat"}
  ]},
  {id:"s4", n:"Semester 4", kids:[]},
- {id:"s5", n:"Semester 5", kids:[
-   {n:"Matematika", k:"matematika"}
- ]}
+ {id:"s5", n:"Semester 5", kids:[]}
+];
+
+/* Kelas mandiri: tampil sejajar dengan kartu Semester di beranda, bukan di dalam semester. */
+window.STANDALONE = [
+ {n:"Matematika", k:"matematika"}
 ];
