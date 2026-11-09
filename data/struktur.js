@@ -20,13 +20,13 @@ window.TREE = [
    {n:"Teori Suku Bunga", k:"tsb"}
  ]},
  {id:"s2", n:"Semester 2", kids:[
-   {n:"Aljabar Linear"},
+   {n:"Aljabar Linear", k:"aljabarlinear"},
    {n:"Bahasa Inggris"},
    {n:"Benua Maritim Indonesia(BMI)"},
    {n:"Matematika Dasar 2"},
    {n:"Pengantar Ekonomi Mikro"},
    {n:"Teori Investasi"},
-   {n:"Teori Peluang"},
+   {n:"Teori Peluang", k:"teoripeluang"},
    {n:"Kewirausahaan"}
  ]},
  {id:"s3", n:"Semester 3", kids:[
