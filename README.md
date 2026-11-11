@@ -30,3 +30,8 @@ Catatan belajar dengan istilah yang muncul saat kursor diarahkan (definisi, rumu
 
 ## Menambah bab baru
 Tambahkan satu blok `{id:"matkul-N", t:"Judul", h:String.raw\`...\`}` di daftar `ch` pada file matkulnya.
+
+## Komponen tambahan (v2.6)
+- `⟦int|teks⟧` kotak Interpretasi, `⟦bukti|teks⟧` kotak Bukti, `⟦def|teks⟧` kotak Definisi (di samping `soal`, `dik`, `tanya`, `teorema`).
+- Gambar kurva (SVG) memakai kelas `.fig` dan `.pl-*` di `css/style.css`; garis waktu vertikal `.vt`; kartu dua kolom `.duo`.
+- `data/statmat.js`: 9 bab (8 Sub-CPMK + peta materi terpadu); latihan tiap bab di `data/latihan.js` (kunci `statmat-1` sampai `statmat-9`); istilah baru berawalan `sm_` di `data/glosarium.js`.
