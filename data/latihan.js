@@ -170,4 +170,136 @@ const P = {
   {q:String.raw`Tugas 2. Aplikasi belanja A: 150 dari 200 pengguna puas. Aplikasi B: 120 dari 180 pengguna puas. Tentukan selang kepercayaan 90% bagi beda dua proporsi.`,
    a:String.raw`⟦langkah|1|Penduga titik|\(\hat p_A=0{,}75,\ \hat p_B=120/180=0{,}6667,\ \hat p_A-\hat p_B=0{,}0833\)⟧⟦langkah|2|Standard error|\[SE=\sqrt{\frac{0{,}75(0{,}25)}{200}+\frac{0{,}6667(0{,}3333)}{180}}=0{,}0466\]⟧⟦langkah|3|Margin of error|\(MoE=1{,}645\times0{,}0466=0{,}0767\)⟧⟦langkah|4|Selang|\(0{,}0067<p_A-p_B<0{,}1600\)⟧⟦garis|0.0067|0.16|p_A−p_B⟧⟦kes|Selang seluruhnya positif, jadi \(p_A>p_B\): proporsi pengguna yang puas pada aplikasi A lebih besar.⟧`},
  ],
+ "makro-1":[
+  {q:String.raw`Tentukan status masing-masing orang (bekerja, penganggur terbuka, atau bukan angkatan kerja): (a) Rina, mahasiswi yang tidak bekerja dan tidak mencari kerja; (b) Budi, lulusan SMA yang tiga bulan terakhir aktif melamar kerja; (c) Sari, ibu rumah tangga yang menjual daring 2 jam seminggu; (d) Andi, sudah diterima kerja dan mulai bulan depan; (e) Dewi, pengemudi ojek daring 20 jam seminggu yang ingin tambah jam.`,
+   a:String.raw`<p><b>Diketahui:</b> lima kasus. <b>Ditanyakan:</b> status tiap orang.</p>
+⟦langkah|1|Rina|Tidak bekerja dan tidak mencari kerja: <b>bukan angkatan kerja</b>.⟧⟦langkah|2|Budi|Tidak bekerja, mencari kerja, tersedia: <b>penganggur terbuka</b>.⟧⟦langkah|3|Sari|Kegiatan ekonomi minimal 1 jam seminggu: <b>bekerja</b> (walau jamnya sangat sedikit).⟧⟦langkah|4|Andi|Menurut BPS, yang sudah diterima kerja tetapi belum mulai dihitung <b>penganggur terbuka</b>.⟧⟦langkah|5|Dewi|<b>Bekerja</b>; karena kurang dari 35 jam dan mau menambah jam, ia juga <b>setengah penganggur</b> (tidak masuk TPT).⟧
+⟦int|Status ditentukan oleh kegiatan dan pencarian kerja, bukan sekadar punya atau tidak punya pekerjaan.⟧`},
+  {q:String.raw`Penduduk usia kerja 250 juta, angkatan kerja 160 juta, bekerja 152 juta. Hitung jumlah penganggur, TPT, dan TPAK.`,
+   a:String.raw`<p><b>Diketahui:</b> PUK \(=250\), AK \(=160\), bekerja \(=152\) (juta). <b>Ditanyakan:</b> penganggur, TPT, TPAK.</p>
+⟦langkah|1|Penganggur|\(160-152=8\) juta⟧⟦langkah|2|TPT|\(\dfrac{8}{160}\times100\%=5\%\)⟧⟦langkah|3|TPAK|\(\dfrac{160}{250}\times100\%=64\%\)⟧
+⟦int|Dari 100 orang di pasar kerja, 5 menganggur; 64% penduduk usia kerja aktif di pasar kerja, sisanya 36% bukan angkatan kerja.⟧`},
+  {q:String.raw`Pengangguran friksional 2,1%, struktural 3,0%, dan pengangguran aktual 7,0%. Hitung pengangguran alamiah dan siklis, lalu tafsirkan.`,
+   a:String.raw`<p><b>Diketahui:</b> \(u_{fr}=2{,}1\%\), \(u_{st}=3{,}0\%\), \(u=7{,}0\%\).</p>
+⟦langkah|1|Alamiah|\(u_n=2{,}1+3{,}0=5{,}1\%\)⟧⟦langkah|2|Siklis|\(u-u_n=7{,}0-5{,}1=1{,}9\) poin⟧
+⟦int|Ada 1,9 poin pengangguran akibat ekonomi di bawah kapasitas (resesi). Bila ekonomi pulih ke potensial, pengangguran cenderung kembali ke sekitar 5,1%.⟧`},
+  {q:String.raw`Koefisien Okun \(\beta=0{,}5\), pertumbuhan potensial \(g^*=4\%\), pengangguran tahun lalu 5,5%. Tahun ini ekonomi tumbuh 2%. (a) Berapa pengangguran tahun ini? (b) Berapa pertumbuhan agar pengangguran turun 0,5 poin?`,
+   a:String.raw`<p><b>Diketahui:</b> \(\beta=0{,}5\); \(g^*=4\); \(u_{t-1}=5{,}5\); \(g=2\).</p>
+⟦langkah|1|(a) Perubahan|\(\Delta u=-0{,}5(2-4)=+1{,}0\) poin⟧⟦langkah|2|(a) Level|\(u=5{,}5+1{,}0=6{,}5\%\)⟧⟦langkah|3|(b) Balik rumus|\(-0{,}5=-0{,}5(g-4)\Rightarrow g-4=1\Rightarrow g=5\%\)⟧
+⟦int|Tumbuh 2 poin di bawah potensial menaikkan pengangguran 1 poin. Untuk menurunkan 0,5 poin, ekonomi harus tumbuh 1 poin di atas potensialnya.⟧`},
+  {q:String.raw`Output aktual 475 triliun, potensial 500 triliun, \(c=0{,}4\), \(u_n=5{,}5\%\). Berapa pengangguran aktual?`,
+   a:String.raw`<p><b>Diketahui:</b> \(Y=475\), \(Y^*=500\), \(c=0{,}4\), \(u_n=5{,}5\).</p>
+⟦langkah|1|Gap|\(\dfrac{475-500}{500}=-5\%\)⟧⟦langkah|2|Okun|\(u-u_n=-0{,}4(-5)=+2\)⟧⟦langkah|3|Hasil|\(u=5{,}5+2=7{,}5\%\)⟧
+⟦int|Output 5% di bawah potensial menambah 2 poin pengangguran siklis.⟧`},
+  {q:String.raw`Pekerja tumbuh 1,5% saat PDB riil tumbuh 5%. Pertumbuhan angkatan kerja 1,2%. (a) Hitung elastisitas. (b) Bila elastisitas tetap, berapa pertumbuhan PDB minimal agar pengangguran tidak naik?`,
+   a:String.raw`<p><b>Diketahui:</b> \(\Delta L/L=1{,}5\%\), \(\Delta Y/Y=5\%\), \(g_{AK}=1{,}2\%\).</p>
+⟦langkah|1|(a)|\(\varepsilon=1{,}5/5=0{,}3\)⟧⟦langkah|2|(b) Syarat|\(g_L\ge1{,}2\%\Rightarrow g_Y=1{,}2/0{,}3=4\%\)⟧
+⟦int|Elastisitas 0,3 itu inelastis: tiap 1% pertumbuhan hanya menyerap 0,3% tambahan pekerja. Pertumbuhan minimal 4% hanya untuk menahan pengangguran agar tidak naik.⟧`},
+ ],
+ "makro-2":[
+  {q:String.raw`\(\pi^e=3\%\), \(\alpha=0{,}5\), \(u_n=5\%\), \(v=0\). Hitung inflasi bila pengangguran 3,5%.`,
+   a:String.raw`<p><b>Diketahui:</b> \(\pi^e=3\); \(\alpha=0{,}5\); \(u_n=5\); \(u=3{,}5\).</p>
+⟦langkah|1|Masukkan|\(\pi=3-0{,}5(3{,}5-5)\)⟧⟦langkah|2|Hitung|\(\pi=3+0{,}75=3{,}75\%\)⟧
+⟦int|Pengangguran 1,5 poin di bawah alamiah menambah inflasi 0,75 poin di atas ekspektasi.⟧`},
+  {q:String.raw`Ekspektasi adaptif \(\pi_t^e=\pi_{t-1}\), \(\pi_0=2\%\), \(\alpha=0{,}5\), \(u_n=5\%\), pengangguran ditahan 4%. (a) Hitung \(\pi_1,\pi_2,\pi_3\). (b) Tahun ke berapa inflasi mencapai 5%?`,
+   a:String.raw`<p><b>Diketahui:</b> tambahan per tahun \(-\alpha(u-u_n)=-0{,}5(4-5)=+0{,}5\) poin.</p>
+⟦langkah|1|(a)|\(\pi_1=2+0{,}5=2{,}5\%\); \(\pi_2=3{,}0\%\); \(\pi_3=3{,}5\%\)⟧⟦langkah|2|(b) Rumus umum|\(\pi_t=2+0{,}5t\). Setel \(=5\): \(t=6\)⟧
+⟦int|Inflasi terus meningkat 0,5 poin per tahun selama \(u\) ditahan di bawah \(u_n\): tahun ke-6 mencapai 5%. Bukan sekali naik, melainkan dipercepat.⟧`},
+  {q:String.raw`\(\pi^e=2\%\), \(\alpha=0{,}5\), \(u_n=5\%\). Harga energi melonjak sehingga \(v=+1{,}5\) dan pengangguran 6%. (a) Hitung inflasi. (b) Mengapa ini sulit dijelaskan kurva Phillips sederhana?`,
+   a:String.raw`<p><b>Diketahui:</b> \(\pi^e=2\), \(\alpha=0{,}5\), \(u_n=5\), \(v=1{,}5\), \(u=6\).</p>
+⟦langkah|1|(a)|\(\pi=2-0{,}5(6-5)+1{,}5=3\%\)⟧⟦langkah|2|(b)|Pada kurva sederhana (tanpa \(v\)): \(\pi=2-0{,}5=1{,}5\%\), jadi pengangguran naik harusnya menurunkan inflasi.⟧
+⟦int|Guncangan penawaran menggeser SRPC ke atas sehingga inflasi dan pengangguran naik bersamaan (stagflasi): 3% versus 1,5% tanpa guncangan.⟧`},
+  {q:String.raw`Bank sentral ingin menurunkan inflasi dari 9% ke 4% dengan sacrifice ratio 2. Dengan Okun versi kesenjangan \(c=0{,}4\), hitung kehilangan output kumulatif dan pengangguran siklis kumulatif.`,
+   a:String.raw`<p><b>Diketahui:</b> \(\Delta\pi=5\) poin; SR \(=2\); \(c=0{,}4\).</p>
+⟦langkah|1|Kehilangan output|\(2\times5=10\%\) PDB tahunan⟧⟦langkah|2|Pengangguran|\(0{,}4\times10=4\) poin-tahun⟧
+⟦int|Misalnya pengangguran siklis 2 poin selama 2 tahun. Biayanya lebih kecil bila ekspektasi inflasi kredibel dan terjangkar.⟧`},
+  {q:String.raw`NKPC dengan \(\beta=0{,}98\), \(E[\pi_{t+1}]=3\%\), \(\kappa=0{,}15\), kesenjangan output \(x=-2\%\). Hitung \(\pi_t\) dan tafsirkan.`,
+   a:String.raw`<p><b>Diketahui:</b> \(\beta=0{,}98\), \(E\pi_{+1}=3\), \(\kappa=0{,}15\), \(x=-2\).</p>
+⟦langkah|1|Ekspektasi|\(0{,}98\times3=2{,}94\)⟧⟦langkah|2|Output gap|\(0{,}15\times(-2)=-0{,}30\)⟧⟦langkah|3|Jumlah|\(\pi_t=2{,}94-0{,}30=2{,}64\%\)⟧
+⟦int|Output di bawah potensial menekan inflasi 0,3 poin di bawah bagian ekspektasi.⟧`},
+  {q:String.raw`Gunakan data Indonesia: 2021 (inflasi 1,87; TPT 6,49), 2022 (5,51; 5,86), 2023 (2,61; 5,32), 2024 (1,57; 4,91). Pada pasangan tahun mana hubungan sesuai trade-off Phillips? Jelaskan.`,
+   a:String.raw`<p><b>Diketahui:</b> data empat tahun. <b>Ditanyakan:</b> kesesuaian dengan Phillips.</p>
+⟦langkah|1|2021→2022|\(\Delta\pi=+3{,}64\), \(\Delta\text{TPT}=-0{,}63\): inflasi naik, TPT turun, <b>sesuai</b>⟧⟦langkah|2|2022→2023|\(\Delta\pi=-2{,}90\), \(\Delta\text{TPT}=-0{,}54\): keduanya turun, <b>tidak sesuai</b>⟧⟦langkah|3|2023→2024|\(\Delta\pi=-1{,}04\), \(\Delta\text{TPT}=-0{,}41\): keduanya turun, <b>tidak sesuai</b>⟧
+⟦int|Hubungan tidak tetap karena inflasi juga dipengaruhi pangan, energi, kurs, dan ekspektasi (faktor \(v\) dan \(\pi^e\)). Lima pengamatan hanyalah deskripsi, bukan uji ekonometrika.⟧`},
+ ],
+ "makro-3":[
+  {q:String.raw`\(C=800\), \(I=250\), \(G=200\), ekspor 150, impor 120 (triliun). Hitung AD dan porsi konsumsi.`,
+   a:String.raw`<p><b>Diketahui:</b> \(C=800\), \(I=250\), \(G=200\), \(X=150\), \(M=120\).</p>
+⟦langkah|1|Ekspor neto|\(150-120=30\)⟧⟦langkah|2|AD|\(800+250+200+30=1.280\) triliun⟧⟦langkah|3|Porsi C|\(800/1.280=62{,}5\%\)⟧
+⟦int|Konsumsi menyumbang sekitar 62,5% AD. Ekspor neto positif menambah permintaan.⟧`},
+  {q:String.raw`Tabungan Rp200 juta, \(c=0{,}04\). (a) Kekayaan riil bila harga naik 25%. (b) Perubahan konsumsi. (c) Kekayaan riil bila harga turun 20%.`,
+   a:String.raw`<p><b>Diketahui:</b> \(W=200\), \(c=0{,}04\).</p>
+⟦langkah|1|(a)|\(W/P=200/1{,}25=160\) juta (turun 40)⟧⟦langkah|2|(b)|\(\Delta C=0{,}04\times(-40)=-1{,}6\) juta⟧⟦langkah|3|(c)|\(W/P=200/0{,}80=250\) juta⟧
+⟦int|Nominal sama, daya beli berubah. Harga naik mengurangi konsumsi, harga turun menambahnya: inilah efek kekayaan.⟧`},
+  {q:String.raw`KPR Rp300 juta, tenor 10 tahun. Hitung cicilan bulanan pada bunga 8% dan 9%. Berapa tambahan total pembayaran?`,
+   a:String.raw`<p><b>Diketahui:</b> \(P=300\) juta, \(n=120\) bulan.</p>
+⟦langkah|1|Bunga 8%|\(r=0{,}08/12\); \(A=300\cdot\dfrac{r}{1-(1+r)^{-120}}\approx3{,}640\) juta⟧⟦langkah|2|Bunga 9%|\(r=0{,}0075\); \(A\approx3{,}800\) juta⟧⟦langkah|3|Selisih|\(\approx0{,}160\) juta per bulan; total bayar \(436{,}8\to456{,}0\) juta, tambahan sekitar 19,3 juta⟧
+⟦int|Bunga naik 1 poin menaikkan cicilan sekitar Rp160 ribu per bulan sehingga sebagian orang menunda beli rumah, konsumsi turun, AD turun.⟧`},
+  {q:String.raw`Ekspor 120 dan impor 100. Setelah rupiah terdepresiasi, ekspor menjadi 135 dan impor 95. Hitung perubahan ekspor neto dan efeknya pada kurva AD.`,
+   a:String.raw`<p><b>Diketahui:</b> awal \(X-M=20\); akhir \(135-95=40\).</p>
+⟦langkah|1|Perubahan|\(\Delta(X-M)=40-20=+20\)⟧⟦langkah|2|Efek|\(\Delta AD=+20\) pada tiap tingkat harga⟧
+⟦int|Depresiasi membuat barang domestik lebih murah bagi luar negeri: ekspor naik, impor turun, AD bergeser ke kanan.⟧`},
+  {q:String.raw`MPC = 0,75 dan investasi naik 80 triliun. (a) Hitung \(k\) dan \(\Delta Y\). (b) Bagaimana bila MPC = 0,9?`,
+   a:String.raw`<p><b>Diketahui:</b> \(\Delta I=80\).</p>
+⟦langkah|1|(a)|\(k=1/(1-0{,}75)=4\Rightarrow\Delta Y=320\) triliun⟧⟦langkah|2|(b)|\(k=1/(1-0{,}9)=10\Rightarrow\Delta Y=800\) triliun⟧
+⟦int|MPC makin besar, multiplier makin besar. Penerima yang cenderung membelanjakan lebih banyak membuat efek lebih kuat.⟧`},
+  {q:String.raw`MPS = 0,15; MPT = 0,20; MPM = 0,15. Belanja pemerintah naik 150 miliar. Hitung multiplier dan \(\Delta Y\). Bandingkan dengan multiplier bila hanya ada tabungan.`,
+   a:String.raw`<p><b>Diketahui:</b> \(\text{MPS}=0{,}15\), \(\text{MPT}=0{,}20\), \(\text{MPM}=0{,}15\), \(\Delta G=150\).</p>
+⟦langkah|1|Kebocoran|\(0{,}15+0{,}20+0{,}15=0{,}50\)⟧⟦langkah|2|\(k\) dan \(\Delta Y\)|\(k=2\); \(\Delta Y=300\) miliar⟧⟦langkah|3|Tanpa pajak dan impor|\(k=1/0{,}15\approx6{,}67\); \(\Delta Y\approx1.000\) miliar⟧
+⟦int|Pajak dan impor memangkas multiplier dari sekitar 6,7 menjadi 2: kebocoran sangat mengurangi daya ungkit belanja.⟧`},
+  {q:String.raw`MPC = 0,8. Pajak naik 50 miliar. (a) Hitung perubahan pendapatan. (b) Bila belanja pemerintah juga naik 50 miliar (anggaran berimbang), berapa total perubahan?`,
+   a:String.raw`<p><b>Diketahui:</b> \(\text{MPC}=0{,}8\), \(\Delta T=50\).</p>
+⟦langkah|1|(a) Pengganda pajak|\(k_T=-\dfrac{0{,}8}{0{,}2}=-4\Rightarrow\Delta Y=-200\)⟧⟦langkah|2|(b) Belanja|\(k=5\Rightarrow\Delta Y=+250\); total \(=250-200=+50\)⟧
+⟦int|Pengganda belanja lebih kuat daripada pengganda pajak (5 versus 4), sehingga anggaran berimbang tetap menaikkan pendapatan sebesar jumlah belanjanya (pengganda 1).⟧`},
+ ],
+ "makro-4":[
+  {q:String.raw`Biaya keranjang tahun dasar Rp1.500.000 dan tahun berjalan Rp1.635.000. Hitung IHK dan tafsirkan.`,
+   a:String.raw`<p><b>Diketahui:</b> dasar \(=1.500.000\); berjalan \(=1.635.000\).</p>
+⟦langkah|1|IHK|\(\dfrac{1.635.000}{1.500.000}\times100=109\)⟧
+⟦int|Keranjang yang sama kini 9% lebih mahal dibanding tahun dasar.⟧`},
+  {q:String.raw`IHK bulan lalu 104,0 dan bulan ini 107,12. Hitung laju inflasi dan jelaskan mengapa jawabannya bukan 3,12%.`,
+   a:String.raw`<p><b>Diketahui:</b> \(\text{IHK}_{t-1}=104{,}0\), \(\text{IHK}_t=107{,}12\).</p>
+⟦langkah|1|Selisih|\(107{,}12-104{,}0=3{,}12\) poin⟧⟦langkah|2|Laju|\(\dfrac{3{,}12}{104{,}0}\times100\%=3{,}0\%\)⟧
+⟦int|3,12 adalah selisih poin IHK, bukan persen. Inflasi dihitung relatif terhadap IHK pembanding.⟧`},
+  {q:String.raw`Beras berbobot 20% naik harga 4%, telur berbobot 3% naik 25%. Siapa yang lebih besar menyumbang inflasi?`,
+   a:String.raw`<p><b>Diketahui:</b> beras \(20\%\), +4%; telur \(3\%\), +25%.</p>
+⟦langkah|1|Beras|\(0{,}20\times4=0{,}80\) poin⟧⟦langkah|2|Telur|\(0{,}03\times25=0{,}75\) poin⟧
+⟦int|Walau telur naik jauh lebih tajam, beras menyumbang sedikit lebih besar karena porsi belanjanya besar.⟧`},
+  {q:String.raw`Tabungan Rp20.000.000 berbunga 4,5% per tahun, inflasi 6%. Hitung saldo, bunga riil, dan nilai riil saldo.`,
+   a:String.raw`<p><b>Diketahui:</b> \(S=20\) juta, \(i=4{,}5\%\), \(\pi=6\%\).</p>
+⟦langkah|1|Saldo|\(20\times1{,}045=20{,}9\) juta⟧⟦langkah|2|Bunga riil|\(r=\dfrac{1{,}045}{1{,}06}-1\approx-1{,}42\%\) (pendekatan \(-1{,}5\%\))⟧⟦langkah|3|Nilai riil|\(20{,}9/1{,}06\approx19{,}72\) juta, hilang sekitar Rp283 ribu daya beli⟧
+⟦int|Saldo nominal naik, tetapi daya belinya turun karena bunga di bawah inflasi.⟧`},
+  {q:String.raw`Anggaran bulanan Rp4.000.000, harga naik 8%. (a) Berapa belanja setara awal yang masih terbeli? (b) Berapa anggaran agar konsumsi tetap? (c) Bila gaji hanya naik 5%, berapa persen daya beli berubah?`,
+   a:String.raw`<p><b>Diketahui:</b> anggaran \(4.000.000\), \(\pi=8\%\).</p>
+⟦langkah|1|(a)|\(4.000.000/1{,}08\approx3.703.704\) (hilang sekitar 296.296)⟧⟦langkah|2|(b)|\(4.000.000\times1{,}08=4.320.000\)⟧⟦langkah|3|(c)|Gaji \(=4.200.000\); \(\dfrac{4{,}2}{4{,}32}-1\approx-2{,}78\%\)⟧
+⟦int|Gaji naik tidak cukup menutup inflasi sehingga upah riil turun sekitar 2,8%.⟧`},
+  {q:String.raw`Klasifikasikan jenis inflasinya: (a) harga pangan dan tiket naik menjelang lebaran; (b) harga BBM dinaikkan pemerintah; (c) rupiah melemah dari 15.000 ke 16.500 per dolar sehingga harga gandum impor naik; (d) pekerja menuntut kenaikan upah 10% karena memperkirakan inflasi 10%. Tentukan juga keparahan bila inflasi tahunan 7%, 45%, dan 180%.`,
+   a:String.raw`<p><b>Ditanyakan:</b> jenis inflasi dan keparahan.</p>
+⟦langkah|1|Jenis|(a) <b>demand-pull</b>; (b) <b>cost-push</b>; (c) <b>inflasi impor</b>; (d) <b>ekspektasi (bawaan)</b>.⟧⟦langkah|2|Keparahan|7%: <b>ringan</b> (kurang dari 10%); 45%: <b>berat</b> (30–100%); 180%: <b>hiperinflasi</b> (lebih dari 100%).⟧
+⟦int|Pada soal (c) pelemahan kurs sebesar \(16.500/15.000-1=10\%\) langsung menaikkan harga barang impor.⟧`},
+  {q:String.raw`Mengapa menaikkan suku bunga kurang ampuh melawan inflasi akibat cost-push (misalnya gangguan pasokan pangan)? Apa yang sebaiknya dilengkapi?`,
+   a:String.raw`<p><b>Penjelasan:</b></p>
+⟦langkah|1|Sumber masalah|Penyebabnya di sisi <b>penawaran</b> (biaya naik), sementara bunga menekan <b>permintaan</b>.⟧⟦langkah|2|Akibat|Menekan permintaan dapat menurunkan inflasi, tetapi dengan pengangguran naik dan pertumbuhan melambat (biaya besar).⟧⟦langkah|3|Pelengkap|Perkuat produksi dan ketahanan pasokan, jaga stok dan distribusi, koordinasi pusat-daerah, serta lindungi kelompok rentan.⟧
+⟦int|Respon kebijakan harus mengikuti sumber inflasi: analisis dahulu sebelum memilih alat.⟧`},
+ ],
+ "makro-5":[
+  {q:String.raw`Ekonomi pada \(Y^*=Y=8.000\) triliun, \(u=u_n=5\%\), \(\pi^e=2{,}5\%\), MPC = 0,75, \(\Delta G=80\) triliun, Okun \(c=0{,}5\), Phillips \(\alpha=0{,}4\). Hitung \(\Delta Y\), gap, \(u\), dan \(\pi\).`,
+   a:String.raw`<p><b>Diketahui:</b> \(Y^*=8.000\); \(\text{MPC}=0{,}75\); \(\Delta G=80\); \(c=0{,}5\); \(\alpha=0{,}4\); \(\pi^e=2{,}5\).</p>
+⟦langkah|1|Multiplier|\(k=1/(1-0{,}75)=4\Rightarrow\Delta Y=320\)⟧⟦langkah|2|Gap|\(320/8.000=+4\%\)⟧⟦langkah|3|Okun|\(u-u_n=-0{,}5\times4=-2\Rightarrow u=3\%\)⟧⟦langkah|4|Phillips|\(\pi=2{,}5-0{,}4(3-5)=2{,}5+0{,}8=3{,}3\%\)⟧
+⟦int|Inflasi 3,3% masih di dalam rentang sasaran 1,5%–3,5%, tetapi dekat batas atas. Jika \(\Delta G\) dipertahankan dan ekspektasi adaptif, tahun berikutnya \(\pi=3{,}3+0{,}8=4{,}1\%\), melampaui sasaran. Ingat: multiplier ini batas atas (harga tetap, tanpa kebocoran).⟧`},
+  {q:String.raw`Ikuti lingkaran sebab-akibat: tentukan arah (naik atau turun) untuk AD, output, pengangguran, dan tekanan inflasi pada peristiwa (a) pemotongan pajak penghasilan, (b) kenaikan BI-Rate, (c) harga minyak dunia melonjak.`,
+   a:String.raw`<table><tr><th style="text-align:left">Peristiwa</th><th>AD</th><th>Output</th><th>Pengangguran</th><th>Tekanan inflasi</th></tr>
+<tr><td style="text-align:left">(a) Pajak turun</td><td>geser kanan ↑</td><td>↑</td><td>↓</td><td>↑</td></tr>
+<tr><td style="text-align:left">(b) BI-Rate naik</td><td>geser kiri ↓</td><td>↓</td><td>↑</td><td>↓</td></tr>
+<tr><td style="text-align:left">(c) Minyak melonjak</td><td>(sisi penawaran)</td><td>↓</td><td>↑</td><td>↑ (stagflasi)</td></tr></table>
+<p><b>Interpretasi:</b> (a) dan (b) bekerja lewat permintaan agregat sehingga bergerak sepanjang SRPC (inflasi dan pengangguran berlawanan arah). (c) adalah guncangan penawaran \(v\): SRPC bergeser dan keduanya naik bersamaan.</p>`},
+  {q:String.raw`Tentukan apakah tiap kejadian merupakan <b>gerak sepanjang kurva</b> atau <b>pergeseran kurva</b>, dan kurva yang mana: (a) tingkat harga umum turun 5%; (b) harga saham naik tajam sehingga konsumen berbelanja lebih banyak; (c) ekspektasi inflasi naik 2 poin; (d) permintaan agregat naik sehingga pengangguran turun; (e) pertumbuhan potensial turun.`,
+   a:String.raw`<table><tr><th style="text-align:left">Kejadian</th><th>Jawaban</th></tr>
+<tr><td style="text-align:left">(a)</td><td><b>Gerak</b> sepanjang kurva AD (P berubah)</td></tr>
+<tr><td style="text-align:left">(b)</td><td><b>Geser</b> kurva AD ke kanan (C naik pada harga umum tetap; ini harga aset, bukan harga umum)</td></tr>
+<tr><td style="text-align:left">(c)</td><td><b>Geser</b> SRPC ke atas sebesar 2 poin</td></tr>
+<tr><td style="text-align:left">(d)</td><td><b>Gerak</b> sepanjang SRPC (A ke B)</td></tr>
+<tr><td style="text-align:left">(e)</td><td><b>Geser</b> garis Okun: titik \(\Delta u=0\) pindah ke \(g^*\) baru</td></tr></table>
+<p><b>Interpretasi:</b> variabel di sumbu penyebab gerak; variabel lain penyebab geser.</p>`},
+ ],
 };

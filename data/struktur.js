@@ -36,7 +36,7 @@ window.TREE = [
   {n:"Matematika Keuangan", k:"matkeu"},
   {n:"Metode Statistika", k:"metstat"},
   {n:"Pengantar Data Mining"},
-  {n:"Pengantar Ekonomi Makro"},
+  {n:"Pengantar Ekonomi Makro", k:"makro"},
   {n:"Pengantar Matematika Aktuaria", k:"pma"},
   {n:"Statistika Matematika", k:"statmat"}
  ]},
